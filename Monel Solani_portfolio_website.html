@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Monel Solani — Mechanical Engineer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#0a0e1a;--bg2:#111827;--bg3:#1a2235;--bg4:#1e2a40;
+--accent:#3b82f6;--accent2:#60a5fa;--accent3:#93c5fd;
+--text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
+--border:#1e3a5f;--border2:#2563eb33;
+--card:#111827;--card2:#1a2235;
+}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:56px}
+.nav-logo{font-weight:700;font-size:1.1rem;color:var(--accent2);letter-spacing:.5px;cursor:pointer}
+.nav-links{display:flex;gap:1.5rem}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:.9rem;transition:color .2s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--accent2)}
+.nav-back{display:none;align-items:center;gap:.5rem;color:var(--accent2);cursor:pointer;font-size:.9rem;background:none;border:none;padding:0}
+.nav-back:hover{color:var(--text)}
+.nav-back svg{width:16px;height:16px}
+
+/* PAGES */
+.page{display:none;padding-top:56px;min-height:100vh}
+.page.active{display:block}
+
+/* HERO */
+.hero{min-height:calc(100vh - 56px);display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,#1e3a5f55 0%,transparent 70%)}
+.hero-content{position:relative;z-index:1;max-width:720px}
+.hero-badge{display:inline-block;background:var(--border2);border:1px solid var(--border);color:var(--accent3);font-size:.78rem;padding:.35rem .9rem;border-radius:100px;margin-bottom:1.5rem;letter-spacing:.5px}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;line-height:1.1;margin-bottom:1rem;background:linear-gradient(135deg,#f1f5f9 0%,#60a5fa 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1.1rem;color:var(--text2);max-width:520px;margin:0 auto 2rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#fff;border:none;padding:.75rem 1.75rem;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-primary:hover{background:#2563eb;transform:translateY(-1px)}
+.btn-secondary{background:transparent;color:var(--accent2);border:1px solid var(--border);padding:.75rem 1.75rem;border-radius:8px;font-size:.95rem;font-weight:500;cursor:pointer;transition:all .2s}
+.btn-secondary:hover{border-color:var(--accent);background:var(--border2)}
+.hero-stats{display:flex;gap:2.5rem;justify-content:center;margin-top:3rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-size:2rem;font-weight:700;color:var(--accent2)}
+.stat-label{font-size:.78rem;color:var(--text3);text-transform:uppercase;letter-spacing:.8px}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:var(--text3);font-size:.78rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+.scroll-arrow{width:20px;height:20px;border-right:2px solid var(--text3);border-bottom:2px solid var(--text3);transform:rotate(45deg)}
+
+/* SECTIONS */
+.section{padding:5rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{font-size:.75rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.75rem}
+.section-title{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;margin-bottom:.75rem}
+.section-sub{color:var(--text2);font-size:1rem;max-width:520px;margin-bottom:3rem}
+.divider{width:48px;height:3px;background:var(--accent);border-radius:2px;margin-bottom:2.5rem}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 2fr;gap:3rem;align-items:start}
+.about-photo-wrap{position:relative}
+.about-photo{width:100%;aspect-ratio:1;background:var(--bg3);border-radius:16px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:4rem;overflow:hidden}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about-photo-fallback{font-size:5rem;opacity:.3}
+.about-badge{position:absolute;bottom:-12px;right:-12px;background:var(--accent);color:#fff;font-size:.75rem;font-weight:700;padding:.4rem .9rem;border-radius:100px}
+.about-info h3{font-size:1.3rem;font-weight:600;margin-bottom:.5rem}
+.about-info p{color:var(--text2);font-size:.95rem;margin-bottom:1.5rem;line-height:1.8}
+.info-row{display:flex;gap:.75rem;margin-bottom:.6rem;align-items:flex-start}
+.info-label{font-size:.8rem;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;min-width:80px;padding-top:2px}
+.info-value{font-size:.9rem;color:var(--text)}
+.skills-title{font-size:.85rem;font-weight:600;color:var(--accent3);margin:1.5rem 0 .75rem;text-transform:uppercase;letter-spacing:.5px}
+.skills-grid{display:flex;flex-wrap:wrap;gap:.5rem}
+.skill-chip{background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-size:.78rem;padding:.3rem .75rem;border-radius:6px}
+.skill-chip.cert{border-color:var(--accent);color:var(--accent2)}
+
+/* EXPERIENCE */
+.exp-timeline{display:flex;flex-direction:column;gap:0}
+.exp-item{display:grid;grid-template-columns:160px 1fr;gap:2rem;position:relative;padding-bottom:3rem}
+.exp-item:last-child{padding-bottom:0}
+.exp-left{text-align:right;padding-top:.25rem}
+.exp-date{font-size:.78rem;color:var(--text3)}
+.exp-company{font-size:.82rem;color:var(--accent2);font-weight:600;margin-top:.25rem}
+.exp-right{border-left:1px solid var(--border);padding-left:2rem;position:relative}
+.exp-dot{position:absolute;left:-6px;top:8px;width:11px;height:11px;background:var(--accent);border-radius:50%;border:2px solid var(--bg)}
+.exp-role{font-size:1.05rem;font-weight:600;margin-bottom:.75rem}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.exp-bullets li{font-size:.88rem;color:var(--text2);padding-left:1rem;position:relative;line-height:1.6}
+.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:.7rem;top:.15em}
+.patent-badge{display:inline-block;background:#1e3a5f;border:1px solid var(--accent);color:var(--accent3);font-size:.7rem;padding:.2rem .6rem;border-radius:4px;margin-bottom:.75rem;font-weight:600}
+
+/* PROJECTS */
+.proj-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.filter-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-size:.8rem;padding:.4rem 1rem;border-radius:100px;cursor:pointer;transition:all .2s}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .25s;display:flex;flex-direction:column}
+.proj-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.proj-thumb{height:160px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative;overflow:hidden}
+.proj-thumb-icon{opacity:.25}
+.proj-cat-badge{position:absolute;top:.75rem;right:.75rem;background:rgba(10,14,26,.85);border:1px solid var(--border);color:var(--accent3);font-size:.68rem;padding:.2rem .6rem;border-radius:4px;font-weight:600}
+.proj-body{padding:1.1rem;flex:1;display:flex;flex-direction:column}
+.proj-title{font-size:.95rem;font-weight:600;margin-bottom:.4rem}
+.proj-desc{font-size:.8rem;color:var(--text2);line-height:1.6;flex:1}
+.proj-footer{margin-top:.9rem;padding-top:.75rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.proj-year{font-size:.72rem;color:var(--text3)}
+.proj-link{font-size:.75rem;color:var(--accent2);font-weight:600}
+
+/* PROJECT DETAIL */
+#page-project{background:var(--bg)}
+.proj-detail-inner{max-width:900px;margin:0 auto;padding:3rem 2rem}
+.proj-detail-hero{background:var(--bg3);border:1px solid var(--border);border-radius:16px;height:280px;display:flex;align-items:center;justify-content:center;font-size:5rem;margin-bottom:2.5rem;overflow:hidden}
+.proj-detail-hero-icon{opacity:.2}
+.proj-detail-tag{font-size:.75rem;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.5rem}
+.proj-detail-title{font-size:2rem;font-weight:700;margin-bottom:1rem}
+.proj-detail-meta{display:flex;gap:1.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.meta-item{display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text2)}
+.meta-icon{color:var(--accent2);font-size:1rem}
+.proj-detail-desc{color:var(--text2);font-size:.97rem;line-height:1.85;margin-bottom:2.5rem}
+.proj-detail-section{margin-bottom:2rem}
+.proj-detail-section h3{font-size:1rem;font-weight:600;color:var(--accent3);margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px}
+.highlights-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem}
+.highlight-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;font-size:.82rem;color:var(--text2);display:flex;align-items:flex-start;gap:.5rem}
+.highlight-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;margin-top:.4rem;flex-shrink:0}
+.media-note{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:1.25rem;font-size:.85rem;color:var(--text2);text-align:center}
+.media-note strong{color:var(--text);display:block;margin-bottom:.25rem}
+.proj-nav{display:flex;gap:1rem;margin-top:3rem;flex-wrap:wrap}
+.proj-nav-btn{background:var(--bg3);border:1px solid var(--border);color:var(--text2);padding:.65rem 1.25rem;border-radius:8px;font-size:.85rem;cursor:pointer;transition:all .2s}
+.proj-nav-btn:hover{border-color:var(--accent);color:var(--accent2)}
+.proj-nav-btn.primary-btn{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.contact-item{display:flex;align-items:center;gap:1rem;padding:1.1rem;background:var(--bg3);border:1px solid var(--border);border-radius:10px}
+.contact-icon{width:40px;height:40px;background:var(--border2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--accent2);flex-shrink:0}
+.contact-label{font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.2rem}
+.contact-val{font-size:.9rem;color:var(--text)}
+.contact-val a{color:var(--accent2);text-decoration:none}
+.award-card{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-top:1.5rem}
+.award-icon{font-size:1.5rem;margin-bottom:.75rem}
+.award-title{font-size:.9rem;font-weight:600;margin-bottom:.25rem}
+.award-sub{font-size:.8rem;color:var(--text2)}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--text3);font-size:.82rem}
+
+/* RESPONSIVE */
+@media(max-width:700px){
+.about-grid{grid-template-columns:1fr}
+.exp-item{grid-template-columns:1fr;gap:.5rem}
+.exp-left{text-align:left}
+.contact-grid{grid-template-columns:1fr}
+.hero-stats{gap:1.5rem}
+nav{padding:0 1rem}
+.nav-links{gap:1rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo" onclick="showPage('home')">MS</span>
+  <button class="nav-back" id="nav-back" onclick="showPage('home')" style="display:none">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to projects
+  </button>
+  <div class="nav-links" id="main-nav">
+    <a onclick="showPage('home');scrollTo('about')" id="nav-about">About</a>
+    <a onclick="showPage('home');scrollTo('experience')" id="nav-exp">Experience</a>
+    <a onclick="showPage('home');scrollTo('projects')" id="nav-proj">Projects</a>
+    <a onclick="showPage('home');scrollTo('contact')" id="nav-contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Mechanical Design Engineer · Robotics & Automation</div>
+      <h1>Monel Solani</h1>
+      <p>Designing next-generation autonomous robots — from concept to manufacturing release. AMRs, AGVs, and competition robots across 30+ projects.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('home');scrollTo('projects')">View Projects</button>
+        <button class="btn-secondary" onclick="showPage('home');scrollTo('contact')">Get in Touch</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Projects</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">Patents Filed</div></div>
+        <div class="stat"><div class="stat-num">2+</div><div class="stat-label">Years R&D</div></div>
+        <div class="stat"><div class="stat-num">8.82</div><div class="stat-label">CGPA</div></div>
+      </div>
+    </div>
+    <div class="scroll-hint"><span>Scroll</span><div class="scroll-arrow"></div></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="section-tag">Who I am</div>
+      <h2 class="section-title">About Me</h2>
+      <div class="divider"></div>
+      <div class="about-grid">
+        <div class="about-photo-wrap">
+          <div class="about-photo">
+            <span class="about-photo-fallback">⚙️</span>
+          </div>
+          <div class="about-badge">CSWA & CSWP Certified</div>
+        </div>
+        <div class="about-info">
+          <p>Mechanical Design Engineer with hands-on experience designing industrial AMRs, warehouse automation systems, and robotic material handling equipment. Experienced in complete product development — from concept generation and CAD modelling to prototyping and production release.</p>
+          <p>Passionate about robotics, automation, and developing scalable mechanical systems for next-generation autonomous products.</p>
+          <div class="info-row"><span class="info-label">Role</span><span class="info-value">Design Engineer, Mechanical R&D · Addverb Technologies</span></div>
+          <div class="info-row"><span class="info-label">Location</span><span class="info-value">Noida / Mumbai, India</span></div>
+          <div class="info-row"><span class="info-label">Education</span><span class="info-value">B.Tech Mechanical Engineering · KJ Somaiya College (CGPA 8.82)</span></div>
+          <div class="info-row"><span class="info-label">Email</span><span class="info-value">monelsolani@gmail.com</span></div>
+
+          <div class="skills-title">CAD & Simulation</div>
+          <div class="skills-grid">
+            <span class="skill-chip cert">SolidWorks CSWA</span>
+            <span class="skill-chip cert">SolidWorks CSWP</span>
+            <span class="skill-chip">Fusion 360</span>
+            <span class="skill-chip">AutoCAD</span>
+            <span class="skill-chip">Ansys</span>
+          </div>
+          <div class="skills-title">Manufacturing & Engineering</div>
+          <div class="skills-grid">
+            <span class="skill-chip">DFM / DFA</span>
+            <span class="skill-chip">GD&T</span>
+            <span class="skill-chip">Sheet Metal Design</span>
+            <span class="skill-chip">FDM 3D Printing</span>
+            <span class="skill-chip">Welded Assemblies</span>
+            <span class="skill-chip">Pneumatics & Hydraulics</span>
+            <span class="skill-chip">BOM & Manufacturing Drawings</span>
+          </div>
+          <div class="skills-title">Other Skills</div>
+          <div class="skills-grid">
+            <span class="skill-chip">Arduino</span>
+            <span class="skill-chip">Basic MATLAB</span>
+            <span class="skill-chip">MS Excel</span>
+            <span class="skill-chip">MS PowerPoint</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience" style="background:var(--bg2)">
+    <div class="section-inner">
+      <div class="section-tag">Work History</div>
+      <h2 class="section-title">Experience</h2>
+      <div class="divider"></div>
+      <div class="exp-timeline">
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <div class="exp-date">Feb 2024 – Present</div>
+            <div class="exp-company">Addverb Technologies</div>
+            <div style="font-size:.72rem;color:var(--text3);margin-top:.25rem">Noida</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-dot"></div>
+            <div class="patent-badge">2 Patents Filed</div>
+            <div class="exp-role">Design Engineer — Mechanical R&D</div>
+            <ul class="exp-bullets">
+              <li>Designed innovative solutions selected for filing of 2 patent applications, expanding the company's IP portfolio.</li>
+              <li>Led original design of multiple pallet-handling Forklift AMR products (FlowT) for ground-to-ground and ground-to-rack applications with 1–1.5 ton payload capacity; systems successfully deployed at customer sites.</li>
+              <li>Managed full product lifecycle — concept generation to manufacturing release — with GD&T-compliant drawings and BOMs.</li>
+              <li>Led original mechanical design of the Assembly Line Robot, a 250 kg payload AGV for automotive assembly-line automation with synchronized lifting, in-place turning, and autonomous navigation.</li>
+              <li>Coordinated prototype builds and validation testing, implementing design improvements for enhanced performance.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <div class="exp-date">2022 – 2024</div>
+            <div class="exp-company">The Innovation Story</div>
+            <div style="font-size:.72rem;color:var(--text3);margin-top:.25rem">Mumbai</div>
+          </div>
+          <div class="exp-right">
+            <div class="exp-dot"></div>
+            <div class="exp-role">Mechanical Design Engineer / Mentor</div>
+            <ul class="exp-bullets">
+              <li>Designed mechanical systems for FIRST Robotics 2023 & 2024, FIRST Tech Challenge 2023 & 2024, and FIRST Global Challenge 2022 & 2023.</li>
+              <li>Mentored 20+ students in designing and building competition robots within a 6-week season; led fabrication of 10+ custom mechanisms over multiple seasons.</li>
+              <li>Mentored FTC team that became World Championship Winning Alliance Captain.</li>
+              <li>Led technical reviews and design iterations under strict competition timelines.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="section-inner">
+      <div class="section-tag">Portfolio</div>
+      <h2 class="section-title">Projects</h2>
+      <div class="divider"></div>
+      <div class="section-sub">30+ projects spanning industrial AMRs, competition robotics, mechanisms, and academic research.</div>
+      <div class="proj-filters">
+        <button class="filter-btn active" onclick="filterProjects('all',this)">All</button>
+        <button class="filter-btn" onclick="filterProjects('industrial',this)">Industrial / AMR</button>
+        <button class="filter-btn" onclick="filterProjects('competition',this)">Competition Robotics</button>
+        <button class="filter-btn" onclick="filterProjects('mechanism',this)">Mechanisms</button>
+        <button class="filter-btn" onclick="filterProjects('academic',this)">Academic / Research</button>
+      </div>
+      <div class="proj-grid" id="proj-grid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact" style="background:var(--bg2)">
+    <div class="section-inner">
+      <div class="section-tag">Get in touch</div>
+      <h2 class="section-title">Contact</h2>
+      <div class="divider"></div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-val"><a href="mailto:monelsolani@gmail.com">monelsolani@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-val">+91 9702703038</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🔗</div>
+            <div>
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-val"><a href="https://linkedin.com" target="_blank">Monel Solani</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-val">Noida / Mumbai, India</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="award-card">
+            <div class="award-icon">🏆</div>
+            <div class="award-title">National Level Fusion 360 Innovation Design Award</div>
+            <div class="award-sub">2022 — Recognized for innovative design excellence at the national level.</div>
+          </div>
+          <div class="award-card" style="margin-top:1rem">
+            <div class="award-icon">🥇</div>
+            <div class="award-title">FIRST Tech Challenge — World Championship Winning Alliance Captain</div>
+            <div class="award-sub">Mentored and guided the team to World Championship-level performance.</div>
+          </div>
+          <div class="award-card" style="margin-top:1rem">
+            <div class="award-icon">📜</div>
+            <div class="award-title">2 Patent Applications Filed</div>
+            <div class="award-sub">Innovations in autonomous mobile robot design at Addverb Technologies.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Monel Solani · Mechanical Design Engineer · Built with ❤️ for robotics and automation</footer>
+</div>
+
+<!-- PROJECT DETAIL PAGE -->
+<div class="page" id="page-project">
+  <div class="proj-detail-inner" id="proj-detail-content"></div>
+</div>
+
+<script>
+const PROJECTS = [
+  {id:1,title:"FlowT Forklift AMR",cat:"industrial",year:"2024–Present",icon:"🏭",desc:"Led original design of multiple pallet-handling Forklift AMR products for ground-to-ground and ground-to-rack applications. Payload capacity of 1 to 1.5 tons; systems successfully deployed and operating at customer sites. Two patent applications filed from innovations in this product line.",highlights:["1–1.5 ton payload capacity","Ground-to-ground and ground-to-rack configurations","Deployed at live customer sites","2 patent applications filed","GD&T-compliant manufacturing drawings","Full product lifecycle management"]},
+  {id:2,title:"Assembly Line Robot (AGV)",cat:"industrial",year:"2024–Present",icon:"🤖",desc:"Led original mechanical design and product development of Addverb's Assembly Line Robot — a 250 kg payload AGV for automotive assembly-line automation. Designed the platform to support chassis handling, material movement, and tugging applications, with features including synchronized lifting, in-place turning, and autonomous navigation.",highlights:["250 kg payload capacity","Automotive assembly-line use case","Synchronized lifting mechanism","In-place turning capability","Autonomous navigation","Chassis and material handling"]},
+  {id:3,title:"Cycloidal Drive Gearbox",cat:"mechanism",year:"2023",icon:"⚙️",desc:"3D printed experimental cycloidal drive gearbox designed without bearings or rollers. Used to study advantages and disadvantages of cycloidal drive over regular planetary gearboxes. Compact design with 10:1 reduction ratio, 30mm thickness, 50mm length and breadth, with hex profile shaft as input/output.",highlights:["10:1 reduction ratio","30mm thickness, 50mm footprint","No bearings or rollers","Hex profile shaft I/O","FDM 3D printed","Comparative study vs. planetary gearbox"]},
+  {id:4,title:"FTC Robot 2023 — Full Design",cat:"competition",year:"2023",icon:"🦾",desc:"Designed a mobile robot for FIRST Tech Challenge 2023 to autonomously pick cones from a stack and place them at different field locations to maximize score. Multiple mechanisms were engineered to minimize the moment of the robot, including a unique Mecanum drivetrain, turret system, and linear lifting mechanism.",highlights:["Mecanum holonomic drivetrain","Odometry pods for X/Y/θ localization","Turret for fast cycle time","Lifting to 35in (889mm) height","Lightweight structural optimization","10+ custom mechanisms"]},
+  {id:5,title:"Turret Mechanism",cat:"mechanism",year:"2023",icon:"🔄",desc:"Designed to reduce cycle time for both autonomous and driver-controlled periods. Standard COTS bearings were infeasible due to size and load constraints, so a unique solution was implemented: a stack of 3 bearings spaced equally around a circumference, allowing smooth and frictionless rotation between elements.",highlights:["3-bearing distributed load solution","No large COTS bearings needed","Smooth frictionless rotation","Optimized for cycle time","3D printed components","Custom bearing arrangement"]},
+  {id:6,title:"Mecanum Drivetrain — FTC 2023",cat:"competition",year:"2023",icon:"🛞",desc:"A compact Mecanum drivetrain designed and manufactured with odometry pods for robot localization in X, Y, and θ. Low center of gravity to prevent toppling. The Mecanum wheels provided full holonomic movement capability, making the robot highly agile on the competition field.",highlights:["Mecanum holonomic movement","Odometry pods (X, Y, θ)","Low CG design","Compact form factor","Custom manufactured","Competition-grade agility"]},
+  {id:7,title:"FRC Robot 2023 — Swerve Drive",cat:"competition",year:"2023",icon:"🤖",desc:"The most mechanically complex robot designed. The problem required picking up compliant cones and cubes and depositing them at grid locations. Features a 15-second autonomous period and 2-minute driver period. Swerve drive was used for precise localization. Motors: Falcon 500 (6300 RPM, 4.69Nm stall torque) with variable planetary gearboxes.",highlights:["Swerve drive for localization","Falcon 500 motors (6300 RPM)","4.69Nm stall torque","Variable planetary gearboxes","Compliant cone intake","15s auto + 2min driver period"]},
+  {id:8,title:"Compliant Cone Intake Mechanism",cat:"mechanism",year:"2023",icon:"🦀",desc:"Designed for the FRC 2023 challenge where compliant cones needed to be grabbed and deposited at different heights. An intake mechanism using active compliant wheels was designed to securely hold cones in place during transport across the field.",highlights:["Active compliant wheels","Secure cone retention","Multi-height deposition","FRC competition use","Integrated with swerve robot","Custom roller geometry"]},
+  {id:9,title:"Robocon 2022 — R1 & R2 Robots",cat:"competition",year:"2022",icon:"🏆",desc:"Two robots designed for Robocon 2022. R1 used a 3-wheel holonomic drive with a flywheel-based shooting mechanism to break Lagori discs at adjustable pitch angles. R2 also used 3-wheel holonomic drive with a stacking mechanism for Lagori discs and a ball-picking mechanism using linear guides and belt systems.",highlights:["3-wheel holonomic drive (both)","Flywheel shooter (R1)","Adjustable pitch shooting","Lagori stacking mechanism (R2)","Belt-driven ball picking (R2)","Linear guide systems"]},
+  {id:10,title:"Robocon 2021 — Arrow Robots",cat:"competition",year:"2021",icon:"🎯",desc:"Two robots designed for Robocon 2021 tasked with picking arrows from a rack and shooting them into targets. Bot 1 featured a picking mechanism and throwing mechanism. Bot 2 featured a ground-pickup claw and a spring-loaded throwing mechanism with pneumatic angle adjustment via lead screw.",highlights:["Pneumatic arrow gripper","Spring-loaded throwing mechanism","Lead screw angle adjustment","Ground-picking claw","Worm gear rotation","Potentiometer feedback"]},
+  {id:11,title:"Throwing Mechanism — Robocon 2021",cat:"mechanism",year:"2021",icon:"🏹",desc:"A pneumatic piston pushes the striker back into a locking mechanism. Four springs attached to the striker propel the arrow when the striker is released. A lead screw coupled to a motor changes the angle of the entire mechanism, requiring a unique snapping motor mount and 3D-printed hinge solution.",highlights:["Pneumatic cocking mechanism","4-spring arrow propulsion","Lead screw angle control","Snapping motor mount","3D printed hinged nut","Adjustable pitch shooting"]},
+  {id:12,title:"Self-locking Gripper Mechanism",cat:"mechanism",year:"2021",icon:"✊",desc:"A passive gripper using torsion and compression springs to keep claws open. When an object is pushed into the claw, it closes and locks. A release trigger allows the object to be dropped. No active actuation required to grip — energy-efficient and mechanically elegant.",highlights:["Passive locking mechanism","Torsion spring claws","Compression spring lock","Release trigger","No power to grip","Mechanically elegant design"]},
+  {id:13,title:"3D Printed Slew Bearing",cat:"mechanism",year:"2022",icon:"🔵",desc:"Designed and 3D printed a custom slew bearing for low-load applications. Inspired by an online design, this bearing uses cylindrical rollers angled to handle both axial and radial loads simultaneously. Designed as an alternative to large, bulky commercial slew rings.",highlights:["Handles axial and radial loads","Cylindrical roller design","Low-load application","FDM 3D printed","Alternative to COTS bearings","Compact slew ring design"]},
+  {id:14,title:"Railway Track Crack Detection Bot",cat:"academic",year:"2022",icon:"🚂",desc:"First prototype of a concept bot that detects cracks on railway tracks. Uses ultrasonic sensors and a camera trained with an ML model to detect cracks larger than 2cm. A unique traversal system was designed to allow the compact bot to move stably along railway tracks.",highlights:["ML-based crack detection (>2cm)","Ultrasonic sensor fusion","Camera vision system","Custom track traversal mechanism","Compact form factor","Prototype/proof-of-concept"]},
+  {id:15,title:"Self-Balancing 2-Wheeler (Gyroscope)",cat:"academic",year:"2022",icon:"🛵",desc:"A self-balancing two-wheeled vehicle concept using mechanical gyroscopes. Spinning discs generate a gyroscopic couple that creates a counter-reacting torque when the vehicle tilts, passively keeping it upright — no active electronic control required.",highlights:["Passive gyroscopic balancing","Spinning disc gyroscopes","No active control needed","Counter-reacting couple","Two-wheel configuration","Educational build"]},
+  {id:16,title:"Mind Control Assistive Wheelchair",cat:"academic",year:"2021",icon:"♿",desc:"Designed and manufactured a wheelchair intended as a mind-control assistive device. Featured BLDC hub motor rear wheels for propulsion and caster wheels at the front. Structural analysis was performed using Ansys to validate the frame design.",highlights:["BLDC hub motor drive","Mind-control interface platform","Ansys FEA structural analysis","Caster front wheels","Full chassis design","Assistive technology"]},
+  {id:17,title:"Hip Joint Analysis — Ansys",cat:"academic",year:"2021",icon:"🦴",desc:"Finite element analysis of the hip joint using Ansys Workbench 2021. The study compared the structural efficiency of the natural femur bone versus a femur implant used in hip replacement surgeries. Results were compiled and converted into an academic paper.",highlights:["Ansys Workbench 2021","Femur bone vs. implant","FEA stress analysis","Hip replacement study","Published as academic paper","Biomedical engineering"]},
+  {id:18,title:"BLDC Quadcopter Drone",cat:"academic",year:"2019",icon:"🚁",desc:"Built a basic BLDC quadcopter from scratch using a KK 2.1.5 flight controller and 2212 1000kv BLDC motors. The project focused primarily on mechanical aspects — frame design, motor mounting, and balance — to understand the dynamics of drone flight.",highlights:["KK 2.1.5 flight controller","2212 1000kv BLDC motors","Custom frame design","X-configuration layout","Mechanical dynamics focus","Self-built from scratch"]},
+  {id:19,title:"Industrial EOT Overhead Crane",cat:"academic",year:"2021",icon:"🏗️",desc:"Designed an industrial Electric Overhead Travelling (EOT) underslung crane to lift 1-ton loads. Learned and applied operational and design details for overhead crane systems including runway, end carriages, bridge, loading mechanics, drive mechanisms, and shop floor planning.",highlights:["1-ton load capacity","Underslung crane type","Runway and end carriage design","Drive mechanism design","Shop floor planning","Structural design calculations"]},
+  {id:20,title:"Odometry Pods — Holonomic Drive",cat:"mechanism",year:"2022",icon:"📡",desc:"Designed odometry pods for 3-wheel holonomic drive robots. An Omni wheel is coupled to an encoder providing feedback in two axes simultaneously, enabling accurate robot localization on the competition field in X, Y, and heading (θ).",highlights:["2-axis position feedback","Omni wheel + encoder","X, Y, θ localization","3-wheel holonomic compatible","Custom mounting bracket","Competition field use"]},
+];
+
+function renderProjects(filter='all'){
+  const grid=document.getElementById('proj-grid');
+  const filtered=filter==='all'?PROJECTS:PROJECTS.filter(p=>p.cat===filter);
+  const catLabels={industrial:'Industrial/AMR',competition:'Competition',mechanism:'Mechanism',academic:'Academic'};
+  grid.innerHTML=filtered.map(p=>`
+    <div class="proj-card" onclick="showProject(${p.id})">
+      <div class="proj-thumb">
+        <span class="proj-thumb-icon" style="font-size:3rem">${p.icon}</span>
+        <span class="proj-cat-badge">${catLabels[p.cat]}</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">${p.title}</div>
+        <div class="proj-desc">${p.desc.slice(0,120)}…</div>
+        <div class="proj-footer">
+          <span class="proj-year">${p.year}</span>
+          <span class="proj-link">View details →</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterProjects(cat,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderProjects(cat);
+}
+
+function showProject(id){
+  const p=PROJECTS.find(x=>x.id===id);
+  if(!p)return;
+  const catLabels={industrial:'Industrial / AMR',competition:'Competition Robotics',mechanism:'Mechanisms & Hardware',academic:'Academic / Research'};
+  const content=`
+    <div class="proj-detail-hero"><span class="proj-detail-hero-icon" style="font-size:6rem">${p.icon}</span></div>
+    <div class="proj-detail-tag">${catLabels[p.cat]}</div>
+    <h1 class="proj-detail-title">${p.title}</h1>
+    <div class="proj-detail-meta">
+      <div class="meta-item"><span class="meta-icon">📅</span>${p.year}</div>
+      <div class="meta-item"><span class="meta-icon">📂</span>${catLabels[p.cat]}</div>
+    </div>
+    <div class="proj-detail-desc">${p.desc}</div>
+    <div class="proj-detail-section">
+      <h3>Key Highlights</h3>
+      <div class="highlights-grid">${p.highlights.map(h=>`<div class="highlight-item"><div class="highlight-dot"></div><span>${h}</span></div>`).join('')}</div>
+    </div>
+    <div class="proj-detail-section">
+      <h3>Media</h3>
+      <div class="media-note">
+        <strong>📸 Photos & Videos</strong>
+        Images and videos for this project can be added here. Upload CAD renders, prototype photos, and demonstration videos to showcase this work in full detail.
+      </div>
+    </div>
+    <div class="proj-nav">
+      <button class="proj-nav-btn" onclick="showPage('home');setTimeout(()=>scrollTo('projects'),100)">← Back to all projects</button>
+      ${id>1?`<button class="proj-nav-btn" onclick="showProject(${id-1})">← Previous project</button>`:''}
+      ${id<PROJECTS.length?`<button class="proj-nav-btn primary-btn" onclick="showProject(${id+1})">Next project →</button>`:''}
+    </div>
+  `;
+  document.getElementById('proj-detail-content').innerHTML=content;
+  showPage('project');
+  window.scrollTo(0,0);
+}
+
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  const isHome=name==='home';
+  document.getElementById('main-nav').style.display=isHome?'flex':'none';
+  document.getElementById('nav-back').style.display=isHome?'none':'flex';
+  if(isHome) window.scrollTo(0,0);
+}
+
+function scrollTo(id){
+  setTimeout(()=>{
+    const el=document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  },50);
+}
+
+renderProjects();
+</script>
+</body>
+</html>

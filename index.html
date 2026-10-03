@@ -11,44 +11,41 @@
   --accent:#2563eb;--accent2:#1d4ed8;--accent3:#3b82f6;
   --text:#0f172a;--text2:#334155;--text3:#64748b;
   --border:#cbd5e1;--border2:#dbeafe;
-  --card:#ffffff;
   --shadow:0 2px 12px rgba(0,0,0,0.07);
   --shadow2:0 6px 28px rgba(37,99,235,0.13);
 }
 body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
 
-/* ── NAV ── */
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,0.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:58px;box-shadow:0 1px 8px rgba(0,0,0,0.06)}
-.nav-logo{font-weight:800;font-size:1.1rem;color:var(--accent);cursor:pointer;letter-spacing:.3px}
+.nav-logo{font-weight:800;font-size:1.1rem;color:var(--accent);cursor:pointer}
 .nav-links{display:flex;gap:.25rem;align-items:center}
-.nav-links a{color:var(--text2);text-decoration:none;font-size:.88rem;font-weight:500;cursor:pointer;padding:.4rem .85rem;border-radius:7px;transition:all .18s;border-bottom:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:.88rem;font-weight:500;cursor:pointer;padding:.4rem .85rem;border-radius:7px;transition:all .18s}
 .nav-links a:hover,.nav-links a.active{color:var(--accent);background:var(--border2)}
-.nav-back{display:none;align-items:center;gap:.5rem;color:var(--accent);cursor:pointer;font-size:.88rem;font-weight:600;background:none;border:none;padding:.4rem .85rem;border-radius:7px;transition:background .18s}
+.nav-back{display:none;align-items:center;gap:.5rem;color:var(--accent);cursor:pointer;font-size:.88rem;font-weight:600;background:none;border:none;padding:.4rem .85rem;border-radius:7px}
 .nav-back:hover{background:var(--border2)}
 .nav-back svg{width:15px;height:15px}
-
-/* dropdown */
 .nav-has-dd{position:relative}
-.nav-has-dd:hover .nav-dd,.nav-has-dd:focus-within .nav-dd{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-has-dd:hover .nav-dd{opacity:1;visibility:visible;transform:translateY(0)}
 .nav-dd{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-6px);background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.13);padding:.45rem;min-width:220px;opacity:0;visibility:hidden;transition:all .2s;z-index:300}
 .nav-dd::before{content:'';position:absolute;top:-5px;left:50%;transform:translateX(-50%) rotate(45deg);width:10px;height:10px;background:#fff;border-left:1px solid var(--border);border-top:1px solid var(--border)}
 .nav-dd-item{padding:.52rem 1rem;border-radius:8px;font-size:.82rem;color:var(--text2);font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap}
 .nav-dd-item:hover{background:var(--border2);color:var(--accent)}
 .nav-dd-div{height:1px;background:var(--border);margin:.3rem .5rem}
 
-/* ── PAGES ── */
+/* PAGES */
 .page{display:none;padding-top:58px;min-height:100vh}
 .page.active{display:block}
 
-/* ── HERO ── */
+/* HERO */
 .hero{min-height:calc(100vh - 58px);display:flex;align-items:center;justify-content:center;text-align:center;padding:3rem 2rem;position:relative;overflow:hidden;background:linear-gradient(135deg,#eff6ff 0%,#f8fafc 55%,#f0fdf4 100%)}
-.hero-blob{position:absolute;width:560px;height:560px;background:radial-gradient(circle,#dbeafe55 0%,transparent 70%);top:-120px;right:-80px;pointer-events:none}
-.hero-blob2{position:absolute;width:380px;height:380px;background:radial-gradient(circle,#dcfce755 0%,transparent 70%);bottom:-80px;left:-60px;pointer-events:none}
+.hero-blob{position:absolute;width:560px;height:560px;background:radial-gradient(circle,#dbeafe55,transparent 70%);top:-120px;right:-80px;pointer-events:none}
+.hero-blob2{position:absolute;width:380px;height:380px;background:radial-gradient(circle,#dcfce755,transparent 70%);bottom:-80px;left:-60px;pointer-events:none}
 .hero-content{position:relative;z-index:1;max-width:720px}
 .hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:#fff;border:1px solid var(--border2);color:var(--accent);font-size:.77rem;font-weight:600;padding:.4rem 1.1rem;border-radius:100px;margin-bottom:1.75rem;box-shadow:0 2px 8px rgba(37,99,235,0.1)}
 .hero-dot{width:7px;height:7px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.hero h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800;line-height:1.08;margin-bottom:.9rem;letter-spacing:-1.5px;color:var(--text)}
+.hero h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800;line-height:1.08;margin-bottom:.9rem;letter-spacing:-1.5px}
 .hero h1 span{color:var(--accent)}
 .hero p{font-size:1.05rem;color:var(--text2);max-width:510px;margin:0 auto 2.25rem;line-height:1.78}
 .hero-btns{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap}
@@ -62,7 +59,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .stat-num{font-size:1.85rem;font-weight:800;color:var(--accent);line-height:1}
 .stat-label{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-top:.25rem}
 
-/* ── SECTIONS ── */
+/* SECTIONS */
 .section{padding:5rem 2rem}
 .section-inner{max-width:1100px;margin:0 auto}
 .section-tag{display:inline-flex;align-items:center;background:var(--border2);color:var(--accent);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;padding:.3rem .85rem;border-radius:100px;margin-bottom:.9rem}
@@ -70,9 +67,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .divider{width:44px;height:4px;background:var(--accent);border-radius:2px;margin-bottom:2.25rem}
 .section-sub{color:var(--text3);font-size:.97rem;margin-bottom:2rem}
 
-/* ── ABOUT ── */
+/* ABOUT */
 .about-grid{display:grid;grid-template-columns:280px 1fr;gap:3rem;align-items:start}
-.about-photo{width:100%;aspect-ratio:.85;background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:18px;border:1px solid var(--border2);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:5rem;box-shadow:var(--shadow2)}
+.about-photo{width:100%;aspect-ratio:.85;background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:18px;border:1px solid var(--border2);overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow2)}
 .about-photo img{width:100%;height:100%;object-fit:cover}
 .about-certs{display:flex;gap:.5rem;margin-top:.85rem;flex-wrap:wrap}
 .cert-badge{background:var(--accent);color:#fff;font-size:.72rem;font-weight:700;padding:.32rem .8rem;border-radius:6px}
@@ -88,7 +85,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .chip{background:#fff;border:1px solid var(--border);color:var(--text2);font-size:.77rem;padding:.28rem .72rem;border-radius:6px;font-weight:500}
 .chip.hl{background:var(--border2);border-color:var(--accent3);color:var(--accent);font-weight:600}
 
-/* ── EXPERIENCE ── */
+/* EXPERIENCE */
 .exp-timeline{display:flex;flex-direction:column}
 .exp-item{display:grid;grid-template-columns:170px 1fr;gap:2rem;padding-bottom:2.75rem}
 .exp-item:last-child{padding-bottom:0}
@@ -105,8 +102,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .exp-ul li{font-size:.87rem;color:var(--text2);padding-left:1.2rem;position:relative;line-height:1.65}
 .exp-ul li::before{content:'';position:absolute;left:0;top:.58em;width:6px;height:6px;background:var(--accent3);border-radius:50%}
 
-/* ── PROJECTS ── */
-/* filter bar */
+/* PROJECTS — filter bar */
 .proj-filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.25rem;padding:.85rem 1rem;background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow)}
 .filter-btn{display:inline-flex;align-items:center;gap:.45rem;background:var(--bg2);border:1.5px solid var(--border);color:var(--text2);font-size:.82rem;font-weight:600;padding:.45rem 1.1rem;border-radius:8px;cursor:pointer;transition:all .18s;white-space:nowrap}
 .filter-btn:hover{border-color:var(--accent3);color:var(--accent);background:var(--border2)}
@@ -114,7 +110,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .filter-btn.active .f-count{background:rgba(255,255,255,0.28);color:#fff}
 .f-count{background:var(--bg3);color:var(--text3);font-size:.68rem;font-weight:700;padding:.1rem .48rem;border-radius:100px;min-width:20px;text-align:center}
 
-/* category headers */
+/* PROJECTS — category blocks */
 .cat-block{margin-bottom:3.5rem}
 .cat-block:last-child{margin-bottom:0}
 .cat-header{display:flex;align-items:center;gap:.85rem;margin-bottom:1.4rem;padding-bottom:.85rem;border-bottom:2px solid var(--border2)}
@@ -122,12 +118,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .cat-title{font-size:1.05rem;font-weight:800;color:var(--text);letter-spacing:-.3px}
 .cat-pill{background:var(--bg3);color:var(--text3);font-size:.74rem;font-weight:600;padding:.2rem .7rem;border-radius:100px}
 
-/* project cards */
+/* PROJECTS — cards */
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:1.35rem}
 .proj-card{background:#fff;border:1px solid var(--border);border-radius:13px;overflow:hidden;cursor:pointer;transition:all .22s;box-shadow:var(--shadow);display:flex;flex-direction:column}
 .proj-card:hover{border-color:var(--accent3);transform:translateY(-5px);box-shadow:var(--shadow2)}
-.proj-thumb{height:164px;background:linear-gradient(135deg,#eff6ff,#e0f2fe);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
-.proj-thumb img{width:100%;height:100%;object-fit:cover}
+.proj-thumb{height:180px;background:#f0f6ff;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
+.proj-thumb img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;padding:.5rem}
 .proj-thumb-icon{font-size:2.8rem;opacity:.28;position:absolute}
 .proj-cat-tag{position:absolute;top:.7rem;right:.7rem;background:rgba(255,255,255,0.93);border:1px solid var(--border2);color:var(--accent);font-size:.66rem;font-weight:700;padding:.22rem .62rem;border-radius:5px}
 .proj-body{padding:1.05rem 1.1rem;flex:1;display:flex;flex-direction:column}
@@ -137,36 +133,49 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .proj-year{font-size:.71rem;color:var(--text3);font-weight:500}
 .proj-cta{font-size:.75rem;color:var(--accent);font-weight:700}
 
-/* ── PROJECT DETAIL ── */
+/* PROJECT DETAIL */
 .proj-detail-inner{max-width:880px;margin:0 auto;padding:2.5rem 2rem}
 .proj-detail-tag{display:inline-flex;background:var(--border2);color:var(--accent);font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.3px;padding:.28rem .8rem;border-radius:100px;margin-bottom:.7rem}
 .proj-detail-title{font-size:2rem;font-weight:800;letter-spacing:-.5px;margin-bottom:.85rem}
 .proj-meta-row{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.75rem}
 .meta-pill{background:#fff;border:1px solid var(--border);border-radius:100px;padding:.3rem .9rem;font-size:.8rem;color:var(--text2);font-weight:500}
 .proj-detail-desc{color:var(--text2);font-size:.97rem;line-height:1.88;margin-bottom:2rem}
+
+/* IMAGE GALLERY — no crop, clickable */
 .img-gallery{display:grid;gap:.85rem;margin:1.25rem 0 2rem}
 .img-gallery.c1{grid-template-columns:1fr}
 .img-gallery.c2{grid-template-columns:1fr 1fr}
 .img-gallery.c3{grid-template-columns:1fr 1fr 1fr}
-/* no crop on project cards */
-.proj-thumb img{width:100%;height:100%;object-fit:contain;background:#f0f6ff;padding:.5rem}
-/* no crop on detail gallery */
-.gimg{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#f0f6ff;cursor:zoom-in;transition:opacity .18s}
-.gimg:hover{opacity:.88}
-.gimg img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:0}
-.gimg-ph{display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--text3);font-size:.76rem;padding:1rem;text-align:center}
+.gimg{border-radius:10px;overflow:hidden;background:#f0f6ff;border:1px solid var(--border);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;cursor:zoom-in;transition:box-shadow .18s,transform .18s;position:relative}
+.gimg:hover{box-shadow:var(--shadow2);transform:translateY(-2px)}
+.gimg img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+.gimg-ph{display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--text3);font-size:.76rem;padding:1rem;text-align:center;cursor:default}
 .gimg-ph span:first-child{font-size:1.75rem;opacity:.35}
 .gimg-ph code{font-size:.67rem;background:var(--bg3);padding:.18rem .45rem;border-radius:4px;color:var(--accent);font-family:monospace;word-break:break-all}
+
 .hl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
 .hl-item{background:#fff;border:1px solid var(--border);border-radius:8px;padding:.65rem .95rem;font-size:.81rem;color:var(--text2);display:flex;align-items:flex-start;gap:.55rem;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
 .hl-dot{width:7px;height:7px;background:var(--accent);border-radius:50%;margin-top:.38rem;flex-shrink:0}
-.detail-section-ttl{font-size:.8rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:.85rem;margin-top:1.75rem}
+.detail-sec-ttl{font-size:.8rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:.85rem;margin-top:1.75rem}
 .proj-nav-row{display:flex;gap:.85rem;margin-top:2.5rem;padding-top:1.75rem;border-top:1px solid var(--border);flex-wrap:wrap}
 .pnav-btn{background:#fff;border:1.5px solid var(--border);color:var(--text2);padding:.62rem 1.2rem;border-radius:8px;font-size:.84rem;font-weight:500;cursor:pointer;transition:all .18s}
 .pnav-btn:hover{border-color:var(--accent);color:var(--accent)}
 .pnav-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 2px 10px rgba(37,99,235,0.22)}
 
-/* ── CONTACT ── */
+/* LIGHTBOX */
+#lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.9);display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(8px)}
+#lightbox.open{display:flex}
+#lb-img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.6);transition:opacity .2s}
+#lb-close{position:fixed;top:1rem;right:1rem;width:42px;height:42px;background:#fff;border:none;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 14px rgba(0,0,0,0.35);transition:all .18s;z-index:10000;color:#0f172a;font-weight:700}
+#lb-close:hover{background:var(--accent);color:#fff;transform:scale(1.1)}
+#lb-prev,#lb-next{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);color:#fff;width:46px;height:46px;border-radius:50%;font-size:1.4rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;backdrop-filter:blur(4px);z-index:10000}
+#lb-prev{left:1rem}
+#lb-next{right:1rem}
+#lb-prev:hover,#lb-next:hover{background:rgba(255,255,255,0.3)}
+#lb-prev.hide,#lb-next.hide{opacity:0;pointer-events:none}
+#lb-counter{position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:#fff;font-size:.8rem;font-weight:500;padding:.35rem .95rem;border-radius:100px;pointer-events:none;z-index:10000}
+
+/* CONTACT */
 .contact-layout{display:grid;grid-template-columns:1fr 1.45fr;gap:2.5rem;align-items:start}
 .contact-intro{color:var(--text2);font-size:.97rem;line-height:1.8;margin-bottom:1.5rem}
 .award-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.15rem 1.4rem;box-shadow:var(--shadow);display:flex;gap:.95rem;align-items:flex-start;margin-bottom:.9rem}
@@ -191,39 +200,33 @@ textarea.finput{min-height:120px;resize:vertical}
 .succ-sub{font-size:.86rem;color:var(--text3)}
 .form-err{background:#fef2f2;border:1px solid #fecaca;color:#dc2626;border-radius:8px;padding:.7rem 1rem;font-size:.84rem;margin-top:.75rem;text-align:center}
 
-/* ── LIGHTBOX ── */
-#lightbox{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.88);display:none;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(6px)}
-#lightbox.open{display:flex}
-#lightbox-img{max-width:92vw;max-height:88vh;width:auto;height:auto;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;user-select:none}
-#lightbox-close{position:fixed;top:1.2rem;right:1.4rem;width:40px;height:40px;background:#fff;border:none;border-radius:50%;font-size:1.25rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,0.3);transition:all .18s;z-index:1001;color:var(--text)}
-#lightbox-close:hover{background:var(--accent);color:#fff;transform:scale(1.08)}
-#lightbox-counter{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:#fff;font-size:.8rem;padding:.35rem .9rem;border-radius:100px;pointer-events:none}
-#lightbox-prev,#lightbox-next{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.3);color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;backdrop-filter:blur(4px)}
-#lightbox-prev{left:1.2rem}#lightbox-next{right:1.2rem}
-#lightbox-prev:hover,#lightbox-next:hover{background:rgba(255,255,255,0.35)}
-#lightbox-prev.hidden,#lightbox-next.hidden{opacity:0;pointer-events:none}
-
-/* ── FOOTER ── */
+/* FOOTER */
 footer{background:#fff;border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--text3);font-size:.82rem}
 footer a{color:var(--accent);text-decoration:none}
 footer strong{color:var(--accent)}
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media(max-width:750px){
   .about-grid,.exp-item,.contact-layout{grid-template-columns:1fr}
   .exp-left{text-align:left}
-  .hero-stats{border-radius:12px}
-  .stat{padding:1rem .75rem}
   .img-gallery.c3{grid-template-columns:1fr 1fr}
   nav{padding:0 1rem}
-  .nav-links{gap:.1rem}
   .nav-links a{padding:.38rem .6rem;font-size:.82rem}
 }
 </style>
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lb-close" onclick="lbClose()" title="Close">✕</button>
+  <button id="lb-prev"  onclick="lbNav(-1)">‹</button>
+  <img    id="lb-img"   src="" alt="Project image"/>
+  <button id="lb-next"  onclick="lbNav(1)">›</button>
+  <div    id="lb-counter"></div>
+</div>
+
+<!-- NAV -->
 <nav>
   <span class="nav-logo" onclick="goHome()">Monel Solani</span>
   <button class="nav-back" id="nav-back" onclick="goHome()">
@@ -233,22 +236,22 @@ footer strong{color:var(--accent)}
   <div class="nav-links" id="main-nav">
     <a id="nl-about"      onclick="navTo('about')">About</a>
     <a id="nl-experience" onclick="navTo('experience')">Experience</a>
-    <a class="nav-has-dd" id="nl-projects">
+    <a class="nav-has-dd" id="nl-projects" onclick="navToFilter('all')">
       Projects
       <div class="nav-dd">
-        <div class="nav-dd-item" onclick="navToFilter('industrial')">🏭 Industrial / AMR &amp; AGVs</div>
-        <div class="nav-dd-item" onclick="navToFilter('competition')">🤖 Competition Robots</div>
-        <div class="nav-dd-item" onclick="navToFilter('mechanism')">⚙️ Mechanisms</div>
-        <div class="nav-dd-item" onclick="navToFilter('academic')">🎓 Academic / Research</div>
+        <div class="nav-dd-item" onclick="event.stopPropagation();navToFilter('industrial')">🏭 Industrial / AMR &amp; AGVs</div>
+        <div class="nav-dd-item" onclick="event.stopPropagation();navToFilter('competition')">🤖 Competition Robots</div>
+        <div class="nav-dd-item" onclick="event.stopPropagation();navToFilter('mechanism')">⚙️ Mechanisms</div>
+        <div class="nav-dd-item" onclick="event.stopPropagation();navToFilter('academic')">🎓 Academic / Research</div>
         <div class="nav-dd-div"></div>
-        <div class="nav-dd-item" onclick="navToFilter('all')">📋 All Projects</div>
+        <div class="nav-dd-item" onclick="event.stopPropagation();navToFilter('all')">📋 All Projects</div>
       </div>
     </a>
     <a id="nl-contact" onclick="navTo('contact')">Contact</a>
   </div>
 </nav>
 
-<!-- ══ HOME PAGE ══ -->
+<!-- HOME PAGE -->
 <div class="page active" id="page-home">
 
   <!-- HERO -->
@@ -259,8 +262,8 @@ footer strong{color:var(--accent)}
       <h1>Monel<br><span>Solani</span></h1>
       <p>Mechanical Design Engineer specialising in industrial autonomous robots, warehouse automation, and robotic material handling — from concept to manufacturing release.</p>
       <div class="hero-btns">
-        <button class="btn-primary"    onclick="navToFilter('all')">View Projects</button>
-        <button class="btn-secondary"  onclick="navTo('contact')">Get in Touch</button>
+        <button class="btn-primary"   onclick="navToFilter('all')">View Projects</button>
+        <button class="btn-secondary" onclick="navTo('contact')">Get in Touch</button>
       </div>
       <div class="hero-stats">
         <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Projects</div></div>
@@ -281,8 +284,7 @@ footer strong{color:var(--accent)}
         <div>
           <div class="about-photo">
             <img src="images/profile.jpg" alt="Monel Solani"
-              onerror="this.style.display='none';this.parentNode.querySelector('.ph').style.display='flex'"/>
-            <span class="ph" style="display:none;font-size:5rem;opacity:.2">👤</span>
+              onerror="this.style.display='none'"/>
           </div>
           <div class="about-certs">
             <span class="cert-badge">CSWA Certified</span>
@@ -339,11 +341,11 @@ footer strong{color:var(--accent)}
             <div class="exp-dot"></div>
             <div class="exp-card">
               <div class="exp-badge">⭐ 2 Patents Filed</div>
-              <div class="exp-role">Design Engineer — Mechanical R&D</div>
+              <div class="exp-role">Design Engineer — Mechanical R&amp;D</div>
               <ul class="exp-ul">
                 <li>Designed innovative solutions selected for filing of 2 patent applications, expanding the company's IP portfolio.</li>
                 <li>Led original design of the FlowT — Forklift AMR products for ground-to-ground and ground-to-rack applications with 1–1.5 ton payload; deployed at live customer sites.</li>
-                <li>Managed full product lifecycle from concept to manufacturing release, creating GD&T-compliant drawings and BOMs.</li>
+                <li>Managed full product lifecycle from concept to manufacturing release, creating GD&amp;T-compliant drawings and BOMs.</li>
                 <li>Led original mechanical design of the Assembly Line Robot — a 250 kg payload AGV for automotive automation with synchronized lifting, in-place turning, and autonomous navigation.</li>
                 <li>Coordinated prototype builds and validation testing, implementing design improvements for enhanced performance.</li>
               </ul>
@@ -363,7 +365,7 @@ footer strong{color:var(--accent)}
               <div class="exp-role">Mechanical Design Engineer / Mentor</div>
               <ul class="exp-ul">
                 <li>Designed mechanical systems for FIRST Robotics 2023 &amp; 2024, FTC 2023 &amp; 2024, and FIRST Global Challenge 2022 &amp; 2023.</li>
-                <li>Mentored 20+ students in designing and building competition robots in 6-week build seasons; led fabrication of 10+ custom mechanisms across multiple seasons.</li>
+                <li>Mentored 20+ students; led fabrication of 10+ custom mechanisms across multiple seasons.</li>
                 <li>Led technical reviews and design iterations under strict competition timelines.</li>
                 <li>Mentored FTC team that became the World Championship Winning Alliance Captain.</li>
               </ul>
@@ -380,18 +382,14 @@ footer strong{color:var(--accent)}
       <div class="section-tag">Portfolio</div>
       <h2 class="section-title">Projects</h2>
       <div class="divider"></div>
-      <p class="section-sub">30+ projects spanning industrial AMRs, competition robotics, custom mechanisms, and academic research. Use the filters below to explore by category.</p>
-
-      <!-- FILTER BAR -->
-      <div class="proj-filter-bar" id="filter-bar">
+      <p class="section-sub">30+ projects spanning industrial AMRs, competition robotics, custom mechanisms, and academic research.</p>
+      <div class="proj-filter-bar">
         <button class="filter-btn active" data-cat="all"         onclick="applyFilter('all',this)">All <span class="f-count" id="fc-all">0</span></button>
         <button class="filter-btn"        data-cat="industrial"  onclick="applyFilter('industrial',this)">🏭 Industrial / AMR &amp; AGVs <span class="f-count" id="fc-industrial">0</span></button>
         <button class="filter-btn"        data-cat="competition" onclick="applyFilter('competition',this)">🤖 Competition Robots <span class="f-count" id="fc-competition">0</span></button>
         <button class="filter-btn"        data-cat="mechanism"   onclick="applyFilter('mechanism',this)">⚙️ Mechanisms <span class="f-count" id="fc-mechanism">0</span></button>
         <button class="filter-btn"        data-cat="academic"    onclick="applyFilter('academic',this)">🎓 Academic / Research <span class="f-count" id="fc-academic">0</span></button>
       </div>
-
-      <!-- PROJECT CONTENT -->
       <div id="proj-content"></div>
     </div>
   </section>
@@ -412,12 +410,11 @@ footer strong{color:var(--accent)}
         <div class="form-card">
           <div class="form-ttl">Send a Message</div>
           <div class="form-sub">All fields are required.</div>
-          <!-- Replace YOUR_FORM_ID with your Formspree endpoint from formspree.io -->
           <form id="contact-form" action="https://formspree.io/f/mkjgdgdr" method="POST">
-            <div class="fgroup"><label class="flabel" for="cf-name">Your Name</label><input class="finput" type="text" id="cf-name" name="name" placeholder="e.g. Rahul Sharma" required/></div>
-            <div class="fgroup"><label class="flabel" for="cf-email">Your Email</label><input class="finput" type="email" id="cf-email" name="email" placeholder="e.g. rahul@company.com" required/></div>
-            <div class="fgroup"><label class="flabel" for="cf-subj">Subject</label><input class="finput" type="text" id="cf-subj" name="subject" placeholder="e.g. Collaboration Opportunity" required/></div>
-            <div class="fgroup"><label class="flabel" for="cf-msg">Details / Description</label><textarea class="finput" id="cf-msg" name="message" placeholder="Tell me about your project or reason for reaching out…" required></textarea></div>
+            <div class="fgroup"><label class="flabel">Your Name</label><input class="finput" type="text" name="name" placeholder="e.g. Rahul Sharma" required/></div>
+            <div class="fgroup"><label class="flabel">Your Email</label><input class="finput" type="email" name="email" placeholder="e.g. rahul@company.com" required/></div>
+            <div class="fgroup"><label class="flabel">Subject</label><input class="finput" type="text" name="subject" placeholder="e.g. Collaboration Opportunity" required/></div>
+            <div class="fgroup"><label class="flabel">Details / Description</label><textarea class="finput" name="message" placeholder="Tell me about your project or reason for reaching out…" required></textarea></div>
             <input type="hidden" name="_subject" value="New message from nextlayer.in"/>
             <button type="submit" class="fsubmit" id="fsubmit">Send Message →</button>
           </form>
@@ -431,31 +428,21 @@ footer strong{color:var(--accent)}
   <footer>© 2026 <strong>Monel Solani</strong> · Mechanical Design Engineer · <a href="https://nextlayer.in">nextlayer.in</a></footer>
 </div>
 
-<!-- ══ LIGHTBOX ══ -->
-<div id="lightbox" role="dialog" aria-modal="true">
-  <button id="lightbox-close" onclick="closeLightbox()" title="Close">✕</button>
-  <button id="lightbox-prev"  onclick="lbNav(-1)">‹</button>
-  <img id="lightbox-img" src="" alt=""/>
-  <button id="lightbox-next"  onclick="lbNav(1)">›</button>
-  <div id="lightbox-counter"></div>
-</div>
-
-<!-- ══ PROJECT DETAIL PAGE ══ -->
+<!-- PROJECT DETAIL PAGE -->
 <div class="page" id="page-project">
   <div class="proj-detail-inner" id="proj-detail-content"></div>
 </div>
 
 <script>
 /* ── DATA ── */
-const CAT = {
-  industrial:  {label:'Industrial / AMR & AGVs', icon:'🏭'},
-  competition: {label:'Competition Robots',       icon:'🤖'},
-  mechanism:   {label:'Mechanisms',               icon:'⚙️'},
-  academic:    {label:'Academic / Research',      icon:'🎓'},
+const CAT={
+  industrial: {label:'Industrial / AMR & AGVs',icon:'🏭'},
+  competition:{label:'Competition Robots',      icon:'🤖'},
+  mechanism:  {label:'Mechanisms',              icon:'⚙️'},
+  academic:   {label:'Academic / Research',     icon:'🎓'},
 };
 
-// Images: add your filenames here after uploading to /images/
-const IMGS = {
+const IMGS={
   1:['p1_a.jpg','p1_b.jpg','p1_c.jpg'],
   2:['p2_a.jpg','p2_b.jpg'],
   3:['p3_a.jpg','p3_b.jpg','p3_c.jpg','p3_d.jpg'],
@@ -488,57 +475,95 @@ const IMGS = {
   30:['p30_a.jpg','p30_b.jpg','p30_c.jpg','p30_d.jpg'],
 };
 
-const PROJECTS = [
-  {id:1, cat:'industrial',  year:'2024–Present', icon:'🏭', title:'FlowT Forklift AMR',                  desc:'Led original design of multiple pallet-handling Forklift AMR products for ground-to-ground and ground-to-rack applications. 1–1.5 ton payload; deployed at live customer sites. Two patents filed from innovations in this product line.', highlights:['1–1.5 ton payload','Ground-to-ground & ground-to-rack','Deployed at customer sites','2 patents filed','GD&T drawings & BOMs','Full lifecycle management']},
-  {id:2, cat:'industrial',  year:'2024–Present', icon:'🤖', title:'Assembly Line Robot (AGV)',            desc:'Led original mechanical design of Addverb\'s Assembly Line Robot — a 250 kg payload AGV for automotive assembly-line automation supporting chassis handling, material movement, and tugging with synchronized lifting, in-place turning, and autonomous navigation.', highlights:['250 kg payload','Automotive assembly-line use','Synchronized lifting','In-place turning','Autonomous navigation','Chassis & material handling']},
-  {id:3, cat:'competition', year:'2023',          icon:'🦾', title:'FTC 2023 — Full Robot Design',        desc:'Designed for FIRST Tech Challenge 2023 to autonomously pick cones and place them at field locations for maximum score. Multiple mechanisms minimized the robot\'s moment of inertia including Mecanum drivetrain, turret, and linear lifting system.', highlights:['Mecanum holonomic drive','Odometry pods X/Y/θ','Turret for fast cycle time','35in (889mm) lift height','10+ custom mechanisms','Lightweight structural optimization']},
-  {id:4, cat:'competition', year:'2023',          icon:'🛞', title:'FTC 2023 — Mecanum Drivetrain',       desc:'Compact Mecanum drivetrain with odometry pods for robot localization in X, Y, and θ. Low CG to prevent toppling. Mecanum wheels enable full holonomic movement for high agility on the competition field.', highlights:['Full holonomic movement','Odometry pods (X, Y, θ)','Low CG design','Compact form factor','Custom manufactured','3D printed mounts']},
-  {id:5, cat:'competition', year:'2023',          icon:'🔄', title:'Turret Mechanism',                    desc:'Designed to reduce cycle time for autonomous and driver periods. COTS bearings were infeasible — a stack of 3 bearings spaced equally around a circumference was used for smooth frictionless rotation between robot elements.', highlights:['3-bearing distributed load','No large COTS bearings','Smooth frictionless rotation','Optimized for cycle time','3D printed ring','Custom bearing arrangement']},
-  {id:6, cat:'competition', year:'2023',          icon:'⬆️', title:'Lifting Mechanism — FTC 2023',        desc:'Required to lift cones from different heights to a maximum of 33.5in (850.9mm). A combination of sliders and string systems travelled from ground level to a maximum of 35in (889mm).', highlights:['35in (889mm) max height','String + slider system','Variable pick heights','Lightweight design','Integrated with turret','Competition use']},
-  {id:7, cat:'competition', year:'2023',          icon:'🤖', title:'FRC 2023 — Swerve Drive Robot',       desc:'Most mechanically complex robot designed — picking compliant cones and cubes and depositing at grid locations. Swerve drive for fast localization. Falcon 500 motors (6300 RPM, 4.69 Nm stall torque) with variable planetary gearboxes.', highlights:['Swerve drive','Falcon 500 (6300 RPM)','4.69 Nm stall torque','Variable planetary gearboxes','Compliant cone intake','15s auto + 2 min driver']},
-  {id:8, cat:'competition', year:'2022',          icon:'🏆', title:'Robocon 2022 — R1 & R2 Robots',       desc:'R1 used 3-wheel holonomic drive with a flywheel shooting mechanism for Lagori at adjustable pitch. R2 also used 3-wheel holonomic drive with a stacking mechanism for Lagori and a belt-driven ball-picking mechanism using linear guides.', highlights:['3-wheel holonomic (both)','Flywheel shooter (R1)','Adjustable pitch (R1)','Lagori stacking (R2)','Belt ball picking (R2)','Linear guide systems']},
-  {id:9, cat:'competition', year:'2021',          icon:'🎯', title:'Robocon 2021 — Arrow Robots',          desc:'Two robots for Robocon 2021 picking arrows and shooting into targets. Bot 1: rack pick + thrower. Bot 2: ground claw + spring thrower with pneumatic angle adjustment via lead screw.', highlights:['Pneumatic arrow gripper','Spring-loaded thrower','Lead screw angle adj.','Ground-picking claw','Worm gear rotation','Potentiometer feedback']},
-  {id:10,cat:'mechanism',   year:'2023',          icon:'⚙️', title:'Cycloidal Drive Gearbox',             desc:'3D printed cycloidal drive gearbox without bearings or rollers. 10:1 reduction ratio, 30mm thick, 50mm footprint. Hex profile shaft I/O. Study of cycloidal vs. planetary gearbox advantages.', highlights:['10:1 reduction ratio','30mm thick, 50mm footprint','No bearings or rollers','Hex profile I/O shaft','FDM 3D printed','vs. planetary study']},
-  {id:11,cat:'mechanism',   year:'2023',          icon:'🦀', title:'Compliant Cone Intake — FRC',          desc:'Intake mechanism for FRC 2023 using active compliant wheels to securely grip and transport compliant cones at different heights and locations across the field.', highlights:['Active compliant wheels','Secure cone retention','Multi-height deposition','Integrated with swerve robot','Belt-driven','Custom roller geometry']},
-  {id:12,cat:'mechanism',   year:'2023',          icon:'🏗️', title:'Lightweight Structural Components',    desc:'Optimized structural design for the FTC 2023 lifter end — extremely light weight yet rigid to support horizontal extension along the gripper at varying heights.', highlights:['Weight-optimized','Rigid & lightweight','Supports horizontal extension','FDM 3D printed','Competition use','Custom geometry']},
-  {id:13,cat:'mechanism',   year:'2021',          icon:'🏹', title:'Throwing Mechanism — Robocon 2021',    desc:'Pneumatic piston cocks a striker into a locking mechanism. Four springs propel the arrow on release. Lead screw + motor adjusts the throw angle. Unique snapping motor mount and 3D-printed hinge solve complex kinematic constraints.', highlights:['Pneumatic cocking','4-spring propulsion','Lead screw angle control','Snapping motor mount','3D printed hinge','Adjustable trajectory']},
-  {id:14,cat:'mechanism',   year:'2021',          icon:'✊', title:'Self-locking Gripper',                 desc:'Passive gripper using torsion and compression springs. Object pushed in causes claw to close and lock. Release trigger drops the object. No power required to grip.', highlights:['Passive locking','Torsion spring claws','Compression spring lock','Release trigger','No power to grip','Mechanically elegant']},
-  {id:15,cat:'mechanism',   year:'2021',          icon:'🤏', title:'Pneumatic Gripper',                   desc:'3D printed gripper arms for pneumatic actuation to pick arrows or cylindrical objects. Includes a guide plate to direct the arrow precisely into the gripping arm.', highlights:['3D printed arms','Pneumatic actuation','Cylindrical object grip','Guide plate for arrow','Custom profile','Competition-grade']},
-  {id:16,cat:'mechanism',   year:'2021',          icon:'⚡', title:'Electrical Gripper',                  desc:'3D printed gripper using linkages and an electrical push-pull solenoid as actuator. Designed for rapid prototyping and competition use without compressed air.', highlights:['Push-pull solenoid','3D printed linkages','Compact design','Electric actuation','No air required','Fast actuation']},
-  {id:17,cat:'mechanism',   year:'2021',          icon:'📡', title:'Potentiometer Mount',                  desc:'Custom 3D printed mount for a hollow shaft potentiometer on the picking mechanism, enabling accurate angular position feedback from the DC worm gear motor.', highlights:['Hollow shaft potentiometer','DC worm gear feedback','Angular position control','3D printed bracket','Custom mounting','Precision control']},
-  {id:18,cat:'mechanism',   year:'2022',          icon:'🔵', title:'3D Printed Slew Bearing',              desc:'Custom 3D printed slew bearing for low-load applications using cylindrical rollers at an angle to handle both axial and radial loads — an alternative to bulky commercial slew rings.', highlights:['Axial + radial load','Cylindrical rollers','Low-load application','FDM 3D printed','Alternative to COTS','Compact design']},
-  {id:19,cat:'mechanism',   year:'2022',          icon:'📡', title:'Odometry Pods — Holonomic Drive',      desc:'Odometry pods for 3-wheel holonomic robots. Omni wheel coupled to an encoder provides 2-axis feedback for accurate field localization (X, Y, θ).', highlights:['2-axis position feedback','Omni wheel + encoder','X, Y, θ localization','3-wheel holonomic','Custom bracket','Competition use']},
-  {id:20,cat:'mechanism',   year:'2021',          icon:'✋', title:'Picking Mechanism — Robocon 2021',     desc:'Picks 5 arrows at a time from the rack using pneumatic or electric grippers. A DC 12V worm gear motor rotates the complete setup for positioning.', highlights:['5 arrows at once','Pneumatic or electric','DC 12V worm gear','Full rotation','Modular design','Competition-grade']},
-  {id:21,cat:'mechanism',   year:'2021',          icon:'🦀', title:'Arrow Ground Picking Claw',            desc:'Forklift-inspired claw to pick arrows from the ground. Servo motor and hook on the servo horn secure the arrow during transfer to the throwing mechanism.', highlights:['Forklift-inspired','Servo actuated','Hook on servo horn','Ground pickup','Aluminium + 3D print','Arrow retention']},
-  {id:22,cat:'mechanism',   year:'2021',          icon:'🔧', title:'Sheet Metal Bending Die',              desc:'3D printed bench-vice-mounted die for bending 2–3mm aluminium sheets at 90°. Simple, repeatable custom tooling solution.', highlights:['90° bending die','2–3mm aluminium','Bench vice mounted','3D printed','Custom tooling','Repeatable bends']},
-  {id:23,cat:'academic',    year:'2022',          icon:'🚂', title:'Railway Track Crack Detection Bot',    desc:'Prototype bot detecting cracks >2cm on railway tracks using ultrasonic sensors and an ML-trained camera. Unique traversal system enables compact movement along the track.', highlights:['ML crack detection >2cm','Ultrasonic + camera','Custom track traversal','Compact form factor','Prototype build','Computer vision']},
-  {id:24,cat:'academic',    year:'2022',          icon:'🛵', title:'Self-Balancing 2-Wheeler (Gyroscope)', desc:'Self-balancing two-wheeled vehicle using mechanical gyroscopes. Spinning discs generate a counter-reacting gyroscopic torque when the vehicle tilts, passively keeping it upright.', highlights:['Passive gyroscopic balance','Spinning disc gyros','No active control','Counter-reacting torque','Two-wheel vehicle','Educational build']},
-  {id:25,cat:'academic',    year:'2021',          icon:'♿', title:'Mind Control Assistive Wheelchair',    desc:'Wheelchair platform for mind-control assistive technology with BLDC hub motor rear wheels and caster front wheels. Structural FEA performed in Ansys.', highlights:['BLDC hub motor drive','Mind-control platform','Ansys FEA','Caster front wheels','Full chassis design','Assistive tech']},
-  {id:26,cat:'academic',    year:'2021',          icon:'🦴', title:'Hip Joint FEA — Ansys',               desc:'FEA of hip joint in Ansys Workbench 2021 comparing structural efficiency of natural femur bone vs. hip replacement implant. Results published as an academic paper.', highlights:['Ansys Workbench 2021','Femur vs. implant','FEA stress analysis','Hip replacement study','Academic paper','Biomedical engineering']},
-  {id:27,cat:'academic',    year:'2021',          icon:'🚁', title:'BLDC Quadcopter Drone',               desc:'Self-built quadcopter using KK 2.1.5 flight controller and 2212 1000kv BLDC motors. Focus on mechanical aspects — frame design, motor mounting, and balance — to understand drone flight dynamics.', highlights:['KK 2.1.5 flight controller','2212 1000kv BLDC','Self-built frame','X-configuration','Mechanical dynamics focus','Educational build']},
-  {id:28,cat:'academic',    year:'2021',          icon:'🏗️', title:'Industrial EOT Overhead Crane',        desc:'Design of an EOT underslung crane for 1-ton loads covering runway, end carriages, bridge, drive mechanisms, and shop floor planning.', highlights:['1-ton load','Underslung crane','Runway + end carriages','Drive mechanism','Shop floor planning','Structural analysis']},
+const PROJECTS=[
+  {id:1, cat:'industrial',  year:'2024–Present',icon:'🏭',title:'FlowT Forklift AMR',                   desc:'Led original design of multiple pallet-handling Forklift AMR products for ground-to-ground and ground-to-rack applications. 1–1.5 ton payload; deployed at live customer sites. Two patents filed.',highlights:['1–1.5 ton payload','Ground & rack configs','Live customer deployments','2 patents filed','GD&T drawings & BOMs','Full lifecycle management']},
+  {id:2, cat:'industrial',  year:'2024–Present',icon:'🤖',title:'Assembly Line Robot (AGV)',             desc:'Led original mechanical design of Addverb\'s Assembly Line Robot — a 250 kg payload AGV for automotive assembly-line automation with synchronized lifting, in-place turning, and autonomous navigation.',highlights:['250 kg payload','Automotive assembly-line','Synchronized lifting','In-place turning','Autonomous navigation','Chassis & material handling']},
+  {id:3, cat:'competition', year:'2023',         icon:'🦾',title:'FTC 2023 — Full Robot Design',         desc:'Designed for FIRST Tech Challenge 2023 to autonomously pick cones and place them at field locations. Mecanum drivetrain, turret, and linear lifting system minimized moment of inertia.',highlights:['Mecanum holonomic drive','Odometry pods X/Y/θ','Turret for fast cycle time','35in lift height','10+ custom mechanisms','Lightweight structural optimization']},
+  {id:4, cat:'competition', year:'2023',         icon:'🛞',title:'FTC 2023 — Mecanum Drivetrain',        desc:'Compact Mecanum drivetrain with odometry pods for robot localization in X, Y, and θ. Low CG to prevent toppling; full holonomic movement for high field agility.',highlights:['Full holonomic movement','Odometry pods (X, Y, θ)','Low CG design','Compact form factor','Custom manufactured','3D printed mounts']},
+  {id:5, cat:'competition', year:'2023',         icon:'🔄',title:'Turret Mechanism',                     desc:'Reduces cycle time for autonomous and driver periods. 3 bearings spaced equally around a circumference replace bulky COTS bearings, enabling smooth frictionless rotation.',highlights:['3-bearing distributed load','No large COTS bearings','Smooth frictionless rotation','Optimized for cycle time','3D printed ring','Custom arrangement']},
+  {id:6, cat:'competition', year:'2023',         icon:'⬆️',title:'Lifting Mechanism — FTC 2023',         desc:'Lifts cones from variable heights to a maximum of 35in (889mm) using a combination of sliders and string systems.',highlights:['35in (889mm) max height','String + slider system','Variable pick heights','Lightweight design','Integrated with turret','Competition use']},
+  {id:7, cat:'competition', year:'2023',         icon:'🤖',title:'FRC 2023 — Swerve Drive Robot',        desc:'Most complex robot designed — picks compliant cones and cubes for grid deposition. Swerve drive for fast localization; Falcon 500 motors (6300 RPM, 4.69 Nm) with variable planetary gearboxes.',highlights:['Swerve drive','Falcon 500 (6300 RPM)','4.69 Nm stall torque','Variable planetary GBX','Compliant cone intake','15s auto + 2 min driver']},
+  {id:8, cat:'competition', year:'2022',         icon:'🏆',title:'Robocon 2022 — R1 & R2 Robots',        desc:'R1: 3-wheel holonomic drive with flywheel shooter for Lagori at adjustable pitch. R2: 3-wheel holonomic with Lagori stacking and belt-driven ball picking via linear guides.',highlights:['3-wheel holonomic (both)','Flywheel shooter (R1)','Adjustable pitch (R1)','Lagori stacking (R2)','Belt ball picking (R2)','Linear guide systems']},
+  {id:9, cat:'competition', year:'2021',         icon:'🎯',title:'Robocon 2021 — Arrow Robots',           desc:'Two robots picking arrows and shooting into targets. Bot 1: rack pick + thrower. Bot 2: ground claw + spring thrower with pneumatic angle adjustment via lead screw.',highlights:['Pneumatic arrow gripper','Spring-loaded thrower','Lead screw angle adj.','Ground-picking claw','Worm gear rotation','Potentiometer feedback']},
+  {id:10,cat:'mechanism',   year:'2023',         icon:'⚙️',title:'Cycloidal Drive Gearbox',              desc:'3D printed cycloidal gearbox without bearings or rollers. 10:1 reduction, 30mm thick, 50mm footprint, hex profile I/O shaft. Comparative study vs. planetary gearbox.',highlights:['10:1 reduction ratio','30mm thick, 50mm footprint','No bearings or rollers','Hex profile I/O','FDM 3D printed','vs. planetary study']},
+  {id:11,cat:'mechanism',   year:'2023',         icon:'🦀',title:'Compliant Cone Intake — FRC',           desc:'Active compliant wheels securely grip and transport compliant cones at different heights for the FRC 2023 challenge.',highlights:['Active compliant wheels','Secure cone retention','Multi-height deposition','Integrated with swerve robot','Belt-driven','Custom roller geometry']},
+  {id:12,cat:'mechanism',   year:'2023',         icon:'🏗️',title:'Lightweight Structural Components',     desc:'Optimized structural design for the FTC 2023 lifter end — extremely light weight yet rigid to support horizontal extension along the gripper.',highlights:['Weight-optimized','Rigid & lightweight','Horizontal extension support','FDM 3D printed','Competition use','Custom geometry']},
+  {id:13,cat:'mechanism',   year:'2021',         icon:'🏹',title:'Throwing Mechanism — Robocon 2021',     desc:'Pneumatic piston cocks a striker; four springs propel the arrow on release. Lead screw + motor adjusts angle. Unique snapping motor mount solves complex kinematic constraints.',highlights:['Pneumatic cocking','4-spring propulsion','Lead screw angle control','Snapping motor mount','3D printed hinge','Adjustable trajectory']},
+  {id:14,cat:'mechanism',   year:'2021',         icon:'✊',title:'Self-locking Gripper',                  desc:'Passive gripper using torsion and compression springs. Pushing an object in closes and locks the claw; a release trigger drops it. No power required to grip.',highlights:['Passive locking','Torsion spring claws','Compression spring lock','Release trigger','No power to grip','Mechanically elegant']},
+  {id:15,cat:'mechanism',   year:'2021',         icon:'🤏',title:'Pneumatic Gripper',                    desc:'3D printed gripper arms for pneumatic actuation to pick arrows or cylindrical objects, with a guide plate for precise arrow alignment.',highlights:['3D printed arms','Pneumatic actuation','Cylindrical object grip','Guide plate','Custom profile','Competition-grade']},
+  {id:16,cat:'mechanism',   year:'2021',         icon:'⚡',title:'Electrical Gripper',                   desc:'3D printed gripper using linkages and a push-pull solenoid actuator. Rapid prototyping solution requiring no compressed air.',highlights:['Push-pull solenoid','3D printed linkages','Compact design','Electric actuation','No air required','Fast actuation']},
+  {id:17,cat:'mechanism',   year:'2021',         icon:'📡',title:'Potentiometer Mount',                   desc:'Custom 3D printed mount for a hollow shaft potentiometer on the picking mechanism, enabling accurate angular position feedback from the DC worm gear motor.',highlights:['Hollow shaft potentiometer','DC worm gear feedback','Angular position control','3D printed bracket','Custom mounting','Precision control']},
+  {id:18,cat:'mechanism',   year:'2022',         icon:'🔵',title:'3D Printed Slew Bearing',               desc:'Custom 3D printed slew bearing for low-load applications using angled cylindrical rollers handling both axial and radial loads — an alternative to bulky commercial slew rings.',highlights:['Axial + radial load','Cylindrical rollers','Low-load application','FDM 3D printed','Alternative to COTS','Compact design']},
+  {id:19,cat:'mechanism',   year:'2022',         icon:'📡',title:'Odometry Pods — Holonomic Drive',       desc:'Odometry pods with Omni wheel + encoder providing 2-axis position feedback for accurate field localization (X, Y, θ) on 3-wheel holonomic robots.',highlights:['2-axis position feedback','Omni wheel + encoder','X, Y, θ localization','3-wheel holonomic','Custom bracket','Competition use']},
+  {id:20,cat:'mechanism',   year:'2021',         icon:'✋',title:'Picking Mechanism — Robocon 2021',      desc:'Picks 5 arrows at a time from the rack using pneumatic or electric grippers. DC 12V worm gear motor rotates the complete assembly for positioning.',highlights:['5 arrows at once','Pneumatic or electric','DC 12V worm gear','Full rotation','Modular design','Competition-grade']},
+  {id:21,cat:'mechanism',   year:'2021',         icon:'🦀',title:'Arrow Ground Picking Claw',             desc:'Forklift-inspired claw picks arrows from the ground. Servo motor and hook on servo horn secure the arrow during transfer to the thrower.',highlights:['Forklift-inspired','Servo actuated','Hook on servo horn','Ground pickup','Aluminium + 3D print','Arrow retention']},
+  {id:22,cat:'mechanism',   year:'2021',         icon:'🔧',title:'Sheet Metal Bending Die',               desc:'3D printed bench-vice-mounted die for bending 2–3mm aluminium sheets at 90°. Simple, repeatable custom tooling solution.',highlights:['90° bending die','2–3mm aluminium','Bench vice mounted','3D printed','Custom tooling','Repeatable bends']},
+  {id:23,cat:'academic',    year:'2022',         icon:'🚂',title:'Railway Track Crack Detection Bot',     desc:'Prototype bot detecting cracks >2cm on railway tracks using ultrasonic sensors and an ML-trained camera. Unique traversal mechanism for compact movement along the track.',highlights:['ML crack detection >2cm','Ultrasonic + camera','Custom track traversal','Compact form factor','Prototype build','Computer vision']},
+  {id:24,cat:'academic',    year:'2022',         icon:'🛵',title:'Self-Balancing 2-Wheeler (Gyroscope)',  desc:'Two-wheeled vehicle using mechanical gyroscopes for passive self-balancing. Spinning discs generate a counter-reacting torque when the vehicle tilts.',highlights:['Passive gyroscopic balance','Spinning disc gyros','No active control','Counter-reacting torque','Two-wheel vehicle','Educational build']},
+  {id:25,cat:'academic',    year:'2021',         icon:'♿',title:'Mind Control Assistive Wheelchair',     desc:'Wheelchair platform for mind-control assistive technology with BLDC hub motor rear wheels and caster front wheels. Structural FEA performed in Ansys.',highlights:['BLDC hub motor drive','Mind-control platform','Ansys FEA','Caster front wheels','Full chassis design','Assistive tech']},
+  {id:26,cat:'academic',    year:'2021',         icon:'🦴',title:'Hip Joint FEA — Ansys',                desc:'FEA in Ansys Workbench 2021 comparing structural efficiency of natural femur bone vs. hip replacement implant. Results published as an academic paper.',highlights:['Ansys Workbench 2021','Femur vs. implant','FEA stress analysis','Hip replacement study','Academic paper','Biomedical engineering']},
+  {id:27,cat:'academic',    year:'2019',         icon:'🚁',title:'BLDC Quadcopter Drone',                desc:'Self-built quadcopter using KK 2.1.5 flight controller and 2212 1000kv BLDC motors. Focus on mechanical aspects — frame design, motor mounting, and balance.',highlights:['KK 2.1.5 controller','2212 1000kv BLDC','Self-built frame','X-configuration','Mechanical dynamics','Educational build']},
+  {id:28,cat:'academic',    year:'2021',         icon:'🏗️',title:'Industrial EOT Overhead Crane',         desc:'Design of an EOT underslung crane for 1-ton loads covering runway, end carriages, bridge, drive mechanisms, and shop floor planning.',highlights:['1-ton load','Underslung crane','Runway + end carriages','Drive mechanism','Shop floor planning','Structural analysis']},
 ];
 
-/* ── STATE ── */
-let activeFilter = 'all';
+/* ── LIGHTBOX ── */
+let lbImgs=[], lbIdx=0;
 
-/* ── COUNTS ── */
-function updateCounts(){
-  ['all','industrial','competition','mechanism','academic'].forEach(cat=>{
-    const el = document.getElementById('fc-'+cat);
-    if(el) el.textContent = cat==='all' ? PROJECTS.length : PROJECTS.filter(p=>p.cat===cat).length;
-  });
+function lbOpen(imgs, idx){
+  lbImgs=imgs; lbIdx=idx;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+  lbShow();
+}
+function lbClose(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+function lbShow(){
+  const img=document.getElementById('lb-img');
+  img.style.opacity='0';
+  img.src=lbImgs[lbIdx];
+  img.onload=()=>{ img.style.transition='opacity .22s'; img.style.opacity='1'; };
+  document.getElementById('lb-counter').textContent=`${lbIdx+1} / ${lbImgs.length}`;
+  document.getElementById('lb-prev').className=lbIdx===0?'hide':'';
+  document.getElementById('lb-next').className=lbIdx===lbImgs.length-1?'hide':'';
+}
+function lbNav(dir){
+  const n=lbIdx+dir;
+  if(n>=0&&n<lbImgs.length){lbIdx=n;lbShow();}
+}
+document.getElementById('lightbox').addEventListener('click',function(e){
+  if(e.target===this) lbClose();
+});
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key==='Escape') lbClose();
+  if(e.key==='ArrowLeft')  lbNav(-1);
+  if(e.key==='ArrowRight') lbNav(1);
+});
+
+/* ── GALLERY HTML ── */
+function gallery(pid){
+  const files=IMGS[pid]||[];
+  if(!files.length) return '';
+  const srcs=files.map(f=>`images/${f}`);
+  const cls=files.length>=3?'c3':files.length===2?'c2':'c1';
+  return `<div class="img-gallery ${cls}">${files.map((f,i)=>`
+    <div class="gimg" onclick="lbOpen(${JSON.stringify(srcs)},${i})">
+      <img src="images/${f}" alt="Photo ${i+1}"
+        onerror="this.parentNode.style.cursor='default';this.parentNode.innerHTML='<div class=\\'gimg-ph\\'><span>📷</span><span>Photo ${i+1}</span><code>images/${f}</code></div>'"/>
+    </div>`).join('')}</div>`;
 }
 
 /* ── CARD HTML ── */
 function cardHTML(p){
-  const imgs = IMGS[p.id]||[];
-  const thumbImg = imgs.length
-    ? `<img src="images/${imgs[0]}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'">`
+  const files=IMGS[p.id]||[];
+  const thumb=files.length
+    ? `<img src="images/${files[0]}" alt="${p.title}" onerror="this.style.display='none'">`
     : '';
   return `<div class="proj-card" onclick="showProject(${p.id})">
     <div class="proj-thumb">
-      ${thumbImg}
+      ${thumb}
       <span class="proj-thumb-icon">${p.icon}</span>
       <span class="proj-cat-tag">${CAT[p.cat].icon} ${CAT[p.cat].label}</span>
     </div>
@@ -553,121 +578,80 @@ function cardHTML(p){
   </div>`;
 }
 
-/* ── RENDER ── */
+/* ── RENDER PROJECTS ── */
 function renderProjects(filter){
-  activeFilter = filter || 'all';
-  const container = document.getElementById('proj-content');
-
-  if(activeFilter === 'all'){
-    // Show each category as a labelled section
-    container.innerHTML = Object.keys(CAT).map(cat=>{
-      const items = PROJECTS.filter(p=>p.cat===cat);
-      return `<div class="cat-block" id="cat-${cat}">
-        <div class="cat-header">
-          <span class="cat-icon">${CAT[cat].icon}</span>
-          <span class="cat-title">${CAT[cat].label}</span>
-          <span class="cat-pill">${items.length} project${items.length!==1?'s':''}</span>
-        </div>
-        <div class="proj-grid">${items.map(cardHTML).join('')}</div>
-      </div>`;
-    }).join('');
-  } else {
-    const items = PROJECTS.filter(p=>p.cat===activeFilter);
-    container.innerHTML = `<div class="cat-block">
+  filter=filter||'all';
+  ['all','industrial','competition','mechanism','academic'].forEach(c=>{
+    const el=document.getElementById('fc-'+c);
+    if(el) el.textContent=c==='all'?PROJECTS.length:PROJECTS.filter(p=>p.cat===c).length;
+  });
+  const container=document.getElementById('proj-content');
+  const cats=filter==='all'?Object.keys(CAT):[filter];
+  container.innerHTML=cats.map(cat=>{
+    const items=PROJECTS.filter(p=>p.cat===cat);
+    return `<div class="cat-block">
       <div class="cat-header">
-        <span class="cat-icon">${CAT[activeFilter].icon}</span>
-        <span class="cat-title">${CAT[activeFilter].label}</span>
+        <span class="cat-icon">${CAT[cat].icon}</span>
+        <span class="cat-title">${CAT[cat].label}</span>
         <span class="cat-pill">${items.length} project${items.length!==1?'s':''}</span>
       </div>
       <div class="proj-grid">${items.map(cardHTML).join('')}</div>
     </div>`;
-  }
+  }).join('');
 }
 
-/* ── FILTER (from filter bar) ── */
+/* ── FILTER ── */
 function applyFilter(cat, btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   if(btn) btn.classList.add('active');
+  else {
+    const b=document.querySelector(`.filter-btn[data-cat="${cat}"]`);
+    if(b) b.classList.add('active');
+  }
   renderProjects(cat);
-  // Don't re-scroll if already in projects section
 }
 
 /* ── NAV ── */
-function navTo(sectionId){
-  if(!document.getElementById('page-home').classList.contains('active')){
-    showPage('home');
-  }
-  setTimeout(()=>{
-    const el = document.getElementById(sectionId);
-    if(el) el.scrollIntoView({behavior:'smooth'});
-  }, 80);
-  setNavActive(sectionId);
+function navTo(id){
+  if(!document.getElementById('page-home').classList.contains('active')) showPage('home');
+  setTimeout(()=>{ const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); },80);
+  setActive(id);
 }
-
 function navToFilter(cat){
-  if(!document.getElementById('page-home').classList.contains('active')){
-    showPage('home');
-  }
-  // Sync filter button
-  document.querySelectorAll('.filter-btn').forEach(b=>{
-    b.classList.toggle('active', b.dataset.cat === cat);
-  });
-  renderProjects(cat);
-  setTimeout(()=>{
-    document.getElementById('projects').scrollIntoView({behavior:'smooth'});
-  }, 80);
-  setNavActive('projects');
+  if(!document.getElementById('page-home').classList.contains('active')) showPage('home');
+  applyFilter(cat, null);
+  setTimeout(()=>{ document.getElementById('projects').scrollIntoView({behavior:'smooth'}); },80);
+  setActive('projects');
 }
-
 function goHome(){
   showPage('home');
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
-function setNavActive(id){
-  ['about','experience','projects','contact'].forEach(s=>{
-    const map={about:'nl-about',experience:'nl-experience',projects:'nl-projects',contact:'nl-contact'};
-    const el = document.getElementById(map[s]);
-    if(el) el.classList.toggle('active', s===id);
-  });
+function setActive(id){
+  const map={about:'nl-about',experience:'nl-experience',projects:'nl-projects',contact:'nl-contact'};
+  Object.keys(map).forEach(k=>{ const el=document.getElementById(map[k]); if(el) el.classList.toggle('active',k===id); });
 }
-
-/* scroll spy */
 window.addEventListener('scroll',()=>{
   if(!document.getElementById('page-home').classList.contains('active')) return;
   let cur='';
-  ['about','experience','projects','contact'].forEach(id=>{
-    const el=document.getElementById(id);
-    if(el && window.scrollY >= el.offsetTop-130) cur=id;
-  });
-  if(cur) setNavActive(cur);
+  ['about','experience','projects','contact'].forEach(id=>{ const el=document.getElementById(id); if(el&&window.scrollY>=el.offsetTop-130) cur=id; });
+  if(cur) setActive(cur);
 });
 
 /* ── PAGE SWITCH ── */
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
-  const isHome = name==='home';
-  document.getElementById('main-nav').style.display  = isHome?'flex':'none';
-  document.getElementById('nav-back').style.display  = isHome?'none':'flex';
+  const home=name==='home';
+  document.getElementById('main-nav').style.display=home?'flex':'none';
+  document.getElementById('nav-back').style.display=home?'none':'flex';
 }
 
 /* ── PROJECT DETAIL ── */
-function gallery(id){
-  const files = IMGS[id]||[];
-  if(!files.length) return '';
-  const cls = files.length>=3?'c3':files.length===2?'c2':'c1';
-  return `<div class="img-gallery ${cls}">${files.map((f,i)=>`
-    <div class="gimg">
-      <img src="images/${f}" alt="Photo ${i+1}"
-        onerror="this.parentNode.innerHTML='<div class=\\'gimg-ph\\'><span>📷</span><span>Photo ${i+1}</span><code>images/${f}</code></div>'"/>
-    </div>`).join('')}</div>`;
-}
-
 function showProject(id){
-  const p = PROJECTS.find(x=>x.id===id);
+  const p=PROJECTS.find(x=>x.id===id);
   if(!p) return;
-  document.getElementById('proj-detail-content').innerHTML = `
+  document.getElementById('proj-detail-content').innerHTML=`
     <div class="proj-detail-tag">${CAT[p.cat].icon} ${CAT[p.cat].label}</div>
     <h1 class="proj-detail-title">${p.title}</h1>
     <div class="proj-meta-row">
@@ -676,7 +660,7 @@ function showProject(id){
     </div>
     ${gallery(id)}
     <div class="proj-detail-desc">${p.desc}</div>
-    <div class="detail-section-ttl">🔑 Key Highlights</div>
+    <div class="detail-sec-ttl">🔑 Key Highlights</div>
     <div class="hl-grid">${p.highlights.map(h=>`<div class="hl-item"><div class="hl-dot"></div><span>${h}</span></div>`).join('')}</div>
     <div class="proj-nav-row">
       <button class="pnav-btn" onclick="goHome();setTimeout(()=>navToFilter('${p.cat}'),120)">← Back to ${CAT[p.cat].label}</button>
@@ -687,53 +671,14 @@ function showProject(id){
   window.scrollTo(0,0);
 }
 
-/* ── LIGHTBOX ── */
-let lbImages=[], lbIndex=0;
-
-function openLightbox(imgs, idx){
-  lbImages=imgs; lbIndex=idx;
-  lbShow();
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeLightbox(){
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow='';
-}
-function lbShow(){
-  const img=document.getElementById('lightbox-img');
-  img.style.opacity='0';
-  img.src=lbImages[lbIndex];
-  img.onload=()=>{img.style.transition='opacity .22s';img.style.opacity='1'};
-  document.getElementById('lightbox-counter').textContent=`${lbIndex+1} / ${lbImages.length}`;
-  document.getElementById('lightbox-prev').classList.toggle('hidden',lbIndex===0);
-  document.getElementById('lightbox-next').classList.toggle('hidden',lbIndex===lbImages.length-1);
-}
-function lbNav(dir){
-  const next=lbIndex+dir;
-  if(next>=0&&next<lbImages.length){lbIndex=next;lbShow();}
-}
-// Close on backdrop click
-document.getElementById('lightbox').addEventListener('click',function(e){
-  if(e.target===this) closeLightbox();
-});
-// Keyboard navigation
-document.addEventListener('keydown',e=>{
-  const lb=document.getElementById('lightbox');
-  if(!lb.classList.contains('open')) return;
-  if(e.key==='Escape') closeLightbox();
-  if(e.key==='ArrowLeft')  lbNav(-1);
-  if(e.key==='ArrowRight') lbNav(1);
-});
-
-/* ── GALLERY HTML ── */
+/* ── CONTACT FORM ── */
 document.getElementById('contact-form').addEventListener('submit',async function(e){
   e.preventDefault();
   const btn=document.getElementById('fsubmit');
   btn.disabled=true; btn.textContent='Sending…';
   try{
     const res=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});
-    if(res.ok){this.style.display='none';document.getElementById('form-success').style.display='block';}
+    if(res.ok){ this.style.display='none'; document.getElementById('form-success').style.display='block'; }
     else throw new Error();
   }catch{
     document.getElementById('form-err').style.display='block';
@@ -742,7 +687,6 @@ document.getElementById('contact-form').addEventListener('submit',async function
 });
 
 /* ── INIT ── */
-updateCounts();
 renderProjects('all');
 </script>
 </body>

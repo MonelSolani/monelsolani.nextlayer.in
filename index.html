@@ -148,8 +148,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .img-gallery.c1{grid-template-columns:1fr}
 .img-gallery.c2{grid-template-columns:1fr 1fr}
 .img-gallery.c3{grid-template-columns:1fr 1fr 1fr}
-.gimg{border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#eff6ff,#e0f2fe);border:1px solid var(--border);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center}
-.gimg img{width:100%;height:100%;object-fit:cover}
+/* no crop on project cards */
+.proj-thumb img{width:100%;height:100%;object-fit:contain;background:#f0f6ff;padding:.5rem}
+/* no crop on detail gallery */
+.gimg{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#f0f6ff;cursor:zoom-in;transition:opacity .18s}
+.gimg:hover{opacity:.88}
+.gimg img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:0}
 .gimg-ph{display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--text3);font-size:.76rem;padding:1rem;text-align:center}
 .gimg-ph span:first-child{font-size:1.75rem;opacity:.35}
 .gimg-ph code{font-size:.67rem;background:var(--bg3);padding:.18rem .45rem;border-radius:4px;color:var(--accent);font-family:monospace;word-break:break-all}
@@ -186,6 +190,18 @@ textarea.finput{min-height:120px;resize:vertical}
 .succ-ttl{font-size:1.05rem;font-weight:700;margin-bottom:.3rem}
 .succ-sub{font-size:.86rem;color:var(--text3)}
 .form-err{background:#fef2f2;border:1px solid #fecaca;color:#dc2626;border-radius:8px;padding:.7rem 1rem;font-size:.84rem;margin-top:.75rem;text-align:center}
+
+/* ── LIGHTBOX ── */
+#lightbox{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.88);display:none;align-items:center;justify-content:center;padding:1.5rem;backdrop-filter:blur(6px)}
+#lightbox.open{display:flex}
+#lightbox-img{max-width:92vw;max-height:88vh;width:auto;height:auto;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;user-select:none}
+#lightbox-close{position:fixed;top:1.2rem;right:1.4rem;width:40px;height:40px;background:#fff;border:none;border-radius:50%;font-size:1.25rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,0.3);transition:all .18s;z-index:1001;color:var(--text)}
+#lightbox-close:hover{background:var(--accent);color:#fff;transform:scale(1.08)}
+#lightbox-counter{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:#fff;font-size:.8rem;padding:.35rem .9rem;border-radius:100px;pointer-events:none}
+#lightbox-prev,#lightbox-next{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.3);color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;backdrop-filter:blur(4px)}
+#lightbox-prev{left:1.2rem}#lightbox-next{right:1.2rem}
+#lightbox-prev:hover,#lightbox-next:hover{background:rgba(255,255,255,0.35)}
+#lightbox-prev.hidden,#lightbox-next.hidden{opacity:0;pointer-events:none}
 
 /* ── FOOTER ── */
 footer{background:#fff;border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--text3);font-size:.82rem}
@@ -413,6 +429,15 @@ footer strong{color:var(--accent)}
   </section>
 
   <footer>© 2026 <strong>Monel Solani</strong> · Mechanical Design Engineer · <a href="https://nextlayer.in">nextlayer.in</a></footer>
+</div>
+
+<!-- ══ LIGHTBOX ══ -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lightbox-close" onclick="closeLightbox()" title="Close">✕</button>
+  <button id="lightbox-prev"  onclick="lbNav(-1)">‹</button>
+  <img id="lightbox-img" src="" alt=""/>
+  <button id="lightbox-next"  onclick="lbNav(1)">›</button>
+  <div id="lightbox-counter"></div>
 </div>
 
 <!-- ══ PROJECT DETAIL PAGE ══ -->
@@ -662,7 +687,46 @@ function showProject(id){
   window.scrollTo(0,0);
 }
 
-/* ── CONTACT FORM ── */
+/* ── LIGHTBOX ── */
+let lbImages=[], lbIndex=0;
+
+function openLightbox(imgs, idx){
+  lbImages=imgs; lbIndex=idx;
+  lbShow();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+function lbShow(){
+  const img=document.getElementById('lightbox-img');
+  img.style.opacity='0';
+  img.src=lbImages[lbIndex];
+  img.onload=()=>{img.style.transition='opacity .22s';img.style.opacity='1'};
+  document.getElementById('lightbox-counter').textContent=`${lbIndex+1} / ${lbImages.length}`;
+  document.getElementById('lightbox-prev').classList.toggle('hidden',lbIndex===0);
+  document.getElementById('lightbox-next').classList.toggle('hidden',lbIndex===lbImages.length-1);
+}
+function lbNav(dir){
+  const next=lbIndex+dir;
+  if(next>=0&&next<lbImages.length){lbIndex=next;lbShow();}
+}
+// Close on backdrop click
+document.getElementById('lightbox').addEventListener('click',function(e){
+  if(e.target===this) closeLightbox();
+});
+// Keyboard navigation
+document.addEventListener('keydown',e=>{
+  const lb=document.getElementById('lightbox');
+  if(!lb.classList.contains('open')) return;
+  if(e.key==='Escape') closeLightbox();
+  if(e.key==='ArrowLeft')  lbNav(-1);
+  if(e.key==='ArrowRight') lbNav(1);
+});
+
+/* ── GALLERY HTML ── */
 document.getElementById('contact-form').addEventListener('submit',async function(e){
   e.preventDefault();
   const btn=document.getElementById('fsubmit');

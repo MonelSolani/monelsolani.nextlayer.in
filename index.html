@@ -122,7 +122,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .proj-card{background:#fff;border:1px solid var(--border);border-radius:13px;overflow:hidden;cursor:pointer;transition:all .22s;box-shadow:var(--shadow);display:flex;flex-direction:column}
 .proj-card:hover{border-color:var(--accent3);transform:translateY(-5px);box-shadow:var(--shadow2)}
 .proj-thumb{height:180px;background:#f0f6ff;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0}
-/* NO CROP on card thumbnails */
 .proj-thumb img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;padding:.5rem;position:relative;z-index:1}
 .proj-thumb-icon{font-size:2.8rem;opacity:.22;position:absolute;z-index:0}
 .proj-cat-tag{position:absolute;top:.7rem;right:.7rem;z-index:2;background:rgba(255,255,255,0.93);border:1px solid var(--border2);color:var(--accent);font-size:.66rem;font-weight:700;padding:.22rem .62rem;border-radius:5px}
@@ -141,100 +140,65 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .meta-pill{background:#fff;border:1px solid var(--border);border-radius:100px;padding:.3rem .9rem;font-size:.8rem;color:var(--text2);font-weight:500}
 .proj-detail-desc{color:var(--text2);font-size:.97rem;line-height:1.88;margin-bottom:2rem}
 
-/* IMAGE GALLERY — no crop, clickable */
+/* IMAGE GALLERY */
 .img-gallery{display:grid;gap:.85rem;margin:1.25rem 0 2rem}
 .img-gallery.c1{grid-template-columns:1fr}
 .img-gallery.c2{grid-template-columns:1fr 1fr}
 .img-gallery.c3{grid-template-columns:1fr 1fr 1fr}
-.gimg{
-  border-radius:10px;
-  overflow:hidden;
-  background:#f0f6ff;
-  border:1px solid var(--border);
-  aspect-ratio:4/3;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:zoom-in;
-  transition:box-shadow .18s,transform .18s;
-}
+.gimg{border-radius:10px;overflow:hidden;background:#f0f6ff;border:1px solid var(--border);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;cursor:zoom-in;transition:box-shadow .18s,transform .18s}
 .gimg:hover{box-shadow:var(--shadow2);transform:translateY(-2px)}
-/* NO CROP on gallery images */
-.gimg img{
-  max-width:100%;
-  max-height:100%;
-  width:auto;
-  height:auto;
-  object-fit:contain;
-  display:block;
-  padding:.5rem;
-}
+.gimg img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;padding:.5rem}
 .gimg-ph{display:flex;flex-direction:column;align-items:center;gap:.4rem;color:var(--text3);font-size:.76rem;padding:1rem;text-align:center;cursor:default}
 .gimg-ph .ph-icon{font-size:1.75rem;opacity:.35}
 .gimg-ph code{font-size:.67rem;background:var(--bg3);padding:.18rem .45rem;border-radius:4px;color:var(--accent);font-family:monospace;word-break:break-all}
 
+/* ===== VIDEO SECTION ===== */
+.video-section{margin:0 0 2rem}
+.video-section-ttl{font-size:.8rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.video-section-ttl::before{content:'';display:inline-block;width:16px;height:3px;background:var(--accent);border-radius:2px}
+.video-grid{display:grid;gap:1rem}
+.video-grid.v1{grid-template-columns:1fr}
+.video-grid.v2{grid-template-columns:1fr 1fr}
+/* YouTube / iframe embed */
+.video-wrap{position:relative;width:100%;aspect-ratio:16/9;background:var(--bg3);border-radius:10px;overflow:hidden;border:1px solid var(--border)}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+/* Local video file embed */
+.video-wrap video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+/* Placeholder when no video added */
+.video-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.65rem;height:100%;min-height:180px;color:var(--text3);padding:1.5rem;text-align:center}
+.video-ph-icon{font-size:2.5rem;opacity:.3}
+.video-ph-title{font-size:.85rem;font-weight:600;color:var(--text2)}
+.video-ph-sub{font-size:.75rem;color:var(--text3);line-height:1.5}
+.video-ph code{font-size:.7rem;background:var(--bg3);border:1px solid var(--border);padding:.2rem .55rem;border-radius:4px;color:var(--accent);font-family:monospace;margin-top:.25rem;display:inline-block}
+/* Add video button — shown when no video is configured */
+.video-add-note{background:var(--bg2);border:1.5px dashed var(--border);border-radius:10px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem}
+.video-add-note-icon{font-size:1.75rem;opacity:.4;flex-shrink:0}
+.video-add-note-text{font-size:.82rem;color:var(--text3);line-height:1.6}
+.video-add-note-text strong{display:block;color:var(--text2);font-size:.88rem;margin-bottom:.2rem}
+.video-add-note code{font-size:.72rem;background:var(--border2);color:var(--accent);padding:.1rem .4rem;border-radius:3px;font-family:monospace}
+
 .hl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
 .hl-item{background:#fff;border:1px solid var(--border);border-radius:8px;padding:.65rem .95rem;font-size:.81rem;color:var(--text2);display:flex;align-items:flex-start;gap:.55rem;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
 .hl-dot{width:7px;height:7px;background:var(--accent);border-radius:50%;margin-top:.38rem;flex-shrink:0}
-.detail-sec-ttl{font-size:.8rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:.85rem;margin-top:1.75rem}
+.detail-sec-ttl{font-size:.8rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:.85rem;margin-top:1.75rem;display:flex;align-items:center;gap:.5rem}
+.detail-sec-ttl::before{content:'';display:inline-block;width:16px;height:3px;background:var(--accent);border-radius:2px}
 .proj-nav-row{display:flex;gap:.85rem;margin-top:2.5rem;padding-top:1.75rem;border-top:1px solid var(--border);flex-wrap:wrap}
 .pnav-btn{background:#fff;border:1.5px solid var(--border);color:var(--text2);padding:.62rem 1.2rem;border-radius:8px;font-size:.84rem;font-weight:500;cursor:pointer;transition:all .18s}
 .pnav-btn:hover{border-color:var(--accent);color:var(--accent)}
 .pnav-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 2px 10px rgba(37,99,235,0.22)}
 
-/* ===== LIGHTBOX ===== */
-#lightbox{
-  position:fixed;inset:0;z-index:9999;
-  background:rgba(0,0,0,0.92);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:1rem;
-  backdrop-filter:blur(8px);
-}
+/* LIGHTBOX */
+#lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(8px)}
 #lightbox.open{display:flex}
-#lb-img{
-  max-width:90vw;
-  max-height:85vh;
-  width:auto;
-  height:auto;
-  object-fit:contain;
-  border-radius:8px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.6);
-  transition:opacity .2s;
-  display:block;
-}
-#lb-close{
-  position:fixed;top:1rem;right:1rem;
-  width:44px;height:44px;
-  background:#fff;border:none;border-radius:50%;
-  font-size:1.3rem;font-weight:700;
-  cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 2px 14px rgba(0,0,0,0.35);
-  transition:all .18s;z-index:10000;color:#0f172a;
-}
+#lb-img{max-width:90vw;max-height:85vh;width:auto;height:auto;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.6);transition:opacity .2s;display:block}
+#lb-close{position:fixed;top:1rem;right:1rem;width:44px;height:44px;background:#fff;border:none;border-radius:50%;font-size:1.3rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 14px rgba(0,0,0,0.35);transition:all .18s;z-index:10000;color:#0f172a}
 #lb-close:hover{background:var(--accent);color:#fff;transform:scale(1.1)}
-#lb-prev,#lb-next{
-  position:fixed;top:50%;transform:translateY(-50%);
-  background:rgba(255,255,255,0.15);
-  border:1.5px solid rgba(255,255,255,0.3);
-  color:#fff;width:48px;height:48px;border-radius:50%;
-  font-size:1.5rem;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .18s;backdrop-filter:blur(4px);z-index:10000;
-}
+#lb-prev,#lb-next{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);color:#fff;width:48px;height:48px;border-radius:50%;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s;backdrop-filter:blur(4px);z-index:10000}
 #lb-prev{left:1rem}
 #lb-next{right:1rem}
 #lb-prev:hover,#lb-next:hover{background:rgba(255,255,255,0.3)}
 #lb-prev.hide,#lb-next.hide{opacity:0;pointer-events:none}
-#lb-counter{
-  position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
-  background:rgba(0,0,0,0.6);color:#fff;
-  font-size:.82rem;font-weight:500;
-  padding:.38rem 1rem;border-radius:100px;
-  pointer-events:none;z-index:10000;
-}
+#lb-counter{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.6);color:#fff;font-size:.82rem;font-weight:500;padding:.38rem 1rem;border-radius:100px;pointer-events:none;z-index:10000}
 
 /* CONTACT */
 .contact-layout{display:grid;grid-template-columns:1fr 1.45fr;gap:2.5rem;align-items:start}
@@ -267,15 +231,18 @@ footer a{color:var(--accent);text-decoration:none}
 @media(max-width:750px){
   .about-grid,.exp-item,.contact-layout{grid-template-columns:1fr}
   .exp-left{text-align:left}
-  .img-gallery.c3{grid-template-columns:1fr 1fr}
+  .img-gallery.c3,.video-grid.v2{grid-template-columns:1fr 1fr}
   nav{padding:0 1rem}
   .nav-links a{padding:.38rem .6rem;font-size:.82rem}
+}
+@media(max-width:500px){
+  .img-gallery.c3,.video-grid.v2{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- ===== LIGHTBOX ===== -->
+<!-- LIGHTBOX -->
 <div id="lightbox">
   <button id="lb-close" onclick="lbClose()">✕</button>
   <button id="lb-prev"  onclick="lbNav(-1)">&#8249;</button>
@@ -284,7 +251,7 @@ footer a{color:var(--accent);text-decoration:none}
   <div    id="lb-counter"></div>
 </div>
 
-<!-- ===== NAV ===== -->
+<!-- NAV -->
 <nav>
   <span class="nav-logo" onclick="goHome()">Monel Solani</span>
   <button class="nav-back" id="nav-back" onclick="goHome()">
@@ -309,7 +276,7 @@ footer a{color:var(--accent);text-decoration:none}
   </div>
 </nav>
 
-<!-- ===== HOME ===== -->
+<!-- HOME -->
 <div class="page active" id="page-home">
 
   <section class="hero" id="hero">
@@ -458,24 +425,22 @@ footer a{color:var(--accent);text-decoration:none}
     </div>
   </section>
 
-  <footer>© 2026<a href="https://nextlayer.in">nextlayer.in</a>
-    <br> · No AI was harmed while designing this website ·
-  </footer>
+  <footer>© 2026 <a href="https://nextlayer.in">nextlayer.in</a><br>· No AI was harmed while designing this website ·</footer>
 </div>
 
-<!-- ===== PROJECT DETAIL ===== -->
+<!-- PROJECT DETAIL -->
 <div class="page" id="page-project">
   <div class="proj-detail-inner" id="proj-detail-content"></div>
 </div>
 
 <script>
-/* DATA */
 const CAT={
-  industrial: {label:'Industrial / AMR & AGVs',icon:'🏭'},
-  competition:{label:'Competition Robots',      icon:'🤖'},
-  mechanism:  {label:'Mechanisms',              icon:'⚙️'},
-  academic:   {label:'Academic / Research',     icon:'🎓'},
+  industrial:{label:'Industrial / AMR & AGVs',icon:'🏭'},
+  competition:{label:'Competition Robots',icon:'🤖'},
+  mechanism:{label:'Mechanisms',icon:'⚙️'},
+  academic:{label:'Academic / Research',icon:'🎓'},
 };
+
 const IMGS={
   1:['p0_a.jpg','p0_b.jpg','p0_c.jpg','p0_d.jpg'],2:['p2_a.jpg','p2_b.jpg'],
   3:['p3_a.jpg','p3_b.jpg','p3_c.jpg','p3_d.jpg'],4:['p4_a.jpg','p4_b.jpg','p4_c.jpg'],
@@ -491,53 +456,94 @@ const IMGS={
   28:['p28_a.jpg','p28_b.jpg'],29:['p29_a.jpg','p29_b.jpg'],
   30:['p30_a.jpg','p30_b.jpg','p30_c.jpg','p30_d.jpg'],
 };
+
+/*
+  ===== VIDEO DATA =====
+  Add videos per project here.
+  Each entry is an array of video objects. Two formats supported:
+
+  1. YouTube:
+     { type: 'youtube', id: 'dQw4w9WgXcQ', label: 'Demo video' }
+     → just the video ID from the YouTube URL
+
+  2. Local file (uploaded to /videos/ folder in your repo):
+     { type: 'local', src: 'videos/p1_demo.mp4', label: 'Prototype test' }
+
+  Leave a project's array empty [] to show the "add a video" placeholder.
+  Example with both types:
+     3: [
+       { type: 'youtube', id: 'ABC123xyz', label: 'Full robot demo' },
+       { type: 'local',   src: 'videos/p3_test.mp4', label: 'Mechanism test' }
+     ],
+*/
+const VIDS={
+  1:[{ type: 'youtube', id: 'BmOmpcwQXQM', label: 'Demo video' }],  // FlowT Forklift AMR — add YouTube ID or local file
+  2:[],  // Assembly Line Robot
+  3:[],  // FTC 2023 Full Robot
+  4:[],  // Mecanum Drivetrain
+  5:[],  // Turret Mechanism
+  6:[],  // Lifting Mechanism
+  7:[],  // FRC 2023 Swerve
+  8:[],  // Robocon 2022
+  9:[],  // Robocon 2021
+  10:[], // Cycloidal Gearbox
+  11:[], // Compliant Cone Intake
+  12:[], // Lightweight Structural
+  13:[], // Throwing Mechanism
+  14:[], // Self-locking Gripper
+  15:[], // Pneumatic Gripper
+  16:[], // Electrical Gripper
+  17:[], // Potentiometer Mount
+  18:[], // 3D Printed Slew Bearing
+  19:[], // Odometry Pods
+  20:[], // Picking Mechanism
+  21:[], // Arrow Ground Claw
+  22:[], // Sheet Metal Bending Die
+  23:[], // Railway Crack Bot
+  24:[], // Self-Balancing 2-Wheeler
+  25:[], // Mind Control Wheelchair
+  26:[], // Hip Joint FEA
+  27:[], // Quadcopter Drone
+  28:[], // EOT Crane
+};
+
 const PROJECTS=[
-  {id:1,cat:'industrial', year:'2024–Present',icon:'🏭',title:'FlowT Forklift AMR',desc:'Led original design of multiple pallet-handling Forklift AMR products for ground-to-ground and ground-to-rack applications. 1–1.5 ton payload; deployed at live customer sites. Two patents filed.',highlights:['1–1.5 ton payload','Ground & rack configs','Live customer deployments','2 patents filed','GD&T drawings & BOMs','Full lifecycle management']},
-  {id:2,cat:'industrial', year:'2024–Present',icon:'🤖',title:'Assembly Line Robot (AGV)',desc:"Led original mechanical design of Addverb's Assembly Line Robot — a 250 kg payload AGV for automotive assembly-line automation with synchronized lifting, in-place turning, and autonomous navigation.",highlights:['250 kg payload','Automotive assembly-line','Synchronized lifting','In-place turning','Autonomous navigation','Chassis & material handling']},
-  {id:3,cat:'competition',year:'2023',        icon:'🦾',title:'FTC 2023 — Full Robot Design',desc:'Designed for FIRST Tech Challenge 2023 to autonomously pick cones and place them at field locations. Mecanum drivetrain, turret, and linear lifting system minimized moment of inertia.',highlights:['Mecanum holonomic drive','Odometry pods X/Y/θ','Turret for fast cycle time','35in lift height','10+ custom mechanisms','Lightweight optimization']},
-  {id:4,cat:'competition',year:'2023',        icon:'🛞',title:'FTC 2023 — Mecanum Drivetrain',desc:'Compact Mecanum drivetrain with odometry pods for robot localization in X, Y, and θ. Low CG to prevent toppling; full holonomic movement for high field agility.',highlights:['Full holonomic movement','Odometry pods (X, Y, θ)','Low CG design','Compact form factor','Custom manufactured','3D printed mounts']},
-  {id:5,cat:'competition',year:'2023',        icon:'🔄',title:'Turret Mechanism',desc:'Reduces cycle time for autonomous and driver periods. 3 bearings spaced equally around a circumference replace bulky COTS bearings, enabling smooth frictionless rotation.',highlights:['3-bearing distributed load','No large COTS bearings','Smooth frictionless rotation','Optimized for cycle time','3D printed ring','Custom arrangement']},
-  {id:6,cat:'competition',year:'2023',        icon:'⬆️',title:'Lifting Mechanism — FTC 2023',desc:'Lifts cones from variable heights to a maximum of 35in (889mm) using a combination of sliders and string systems.',highlights:['35in (889mm) max height','String + slider system','Variable pick heights','Lightweight design','Integrated with turret','Competition use']},
-  {id:7,cat:'competition',year:'2023',        icon:'🤖',title:'FRC 2023 — Swerve Drive Robot',desc:'Most complex robot designed — picks compliant cones and cubes for grid deposition. Swerve drive for fast localization; Falcon 500 motors (6300 RPM, 4.69 Nm) with variable planetary gearboxes.',highlights:['Swerve drive','Falcon 500 (6300 RPM)','4.69 Nm stall torque','Variable planetary GBX','Compliant cone intake','15s auto + 2 min driver']},
-  {id:8,cat:'competition',year:'2022',        icon:'🏆',title:'Robocon 2022 — R1 & R2 Robots',desc:'R1: 3-wheel holonomic drive with flywheel shooter for Lagori at adjustable pitch. R2: 3-wheel holonomic with Lagori stacking and belt-driven ball picking via linear guides.',highlights:['3-wheel holonomic (both)','Flywheel shooter (R1)','Adjustable pitch (R1)','Lagori stacking (R2)','Belt ball picking (R2)','Linear guide systems']},
-  {id:9,cat:'competition',year:'2021',        icon:'🎯',title:'Robocon 2021 — Arrow Robots',desc:'Two robots picking arrows and shooting into targets. Bot 1: rack pick + thrower. Bot 2: ground claw + spring thrower with pneumatic angle adjustment via lead screw.',highlights:['Pneumatic arrow gripper','Spring-loaded thrower','Lead screw angle adj.','Ground-picking claw','Worm gear rotation','Potentiometer feedback']},
-  {id:10,cat:'mechanism', year:'2023',        icon:'⚙️',title:'Cycloidal Drive Gearbox',desc:'3D printed cycloidal gearbox without bearings or rollers. 10:1 reduction, 30mm thick, 50mm footprint, hex profile I/O shaft. Comparative study vs. planetary gearbox.',highlights:['10:1 reduction ratio','30mm thick, 50mm footprint','No bearings or rollers','Hex profile I/O','FDM 3D printed','vs. planetary study']},
-  {id:11,cat:'mechanism', year:'2023',        icon:'🦀',title:'Compliant Cone Intake — FRC',desc:'Active compliant wheels securely grip and transport compliant cones at different heights for the FRC 2023 challenge.',highlights:['Active compliant wheels','Secure cone retention','Multi-height deposition','Integrated with swerve robot','Belt-driven','Custom roller geometry']},
-  {id:12,cat:'mechanism', year:'2023',        icon:'🏗️',title:'Lightweight Structural Components',desc:'Optimized structural design for the FTC 2023 lifter end — extremely light weight yet rigid to support horizontal extension along the gripper.',highlights:['Weight-optimized','Rigid & lightweight','Horizontal extension support','FDM 3D printed','Competition use','Custom geometry']},
-  {id:13,cat:'mechanism', year:'2021',        icon:'🏹',title:'Throwing Mechanism — Robocon 2021',desc:'Pneumatic piston cocks a striker; four springs propel the arrow on release. Lead screw + motor adjusts angle. Unique snapping motor mount solves complex kinematic constraints.',highlights:['Pneumatic cocking','4-spring propulsion','Lead screw angle control','Snapping motor mount','3D printed hinge','Adjustable trajectory']},
-  {id:14,cat:'mechanism', year:'2021',        icon:'✊',title:'Self-locking Gripper',desc:'Passive gripper using torsion and compression springs. Pushing an object in closes and locks the claw; a release trigger drops it. No power required to grip.',highlights:['Passive locking','Torsion spring claws','Compression spring lock','Release trigger','No power to grip','Mechanically elegant']},
-  {id:15,cat:'mechanism', year:'2021',        icon:'🤏',title:'Pneumatic Gripper',desc:'3D printed gripper arms for pneumatic actuation to pick arrows or cylindrical objects, with a guide plate for precise arrow alignment.',highlights:['3D printed arms','Pneumatic actuation','Cylindrical object grip','Guide plate','Custom profile','Competition-grade']},
-  {id:16,cat:'mechanism', year:'2021',        icon:'⚡',title:'Electrical Gripper',desc:'3D printed gripper using linkages and a push-pull solenoid actuator. Rapid prototyping solution requiring no compressed air.',highlights:['Push-pull solenoid','3D printed linkages','Compact design','Electric actuation','No air required','Fast actuation']},
-  {id:17,cat:'mechanism', year:'2021',        icon:'📡',title:'Potentiometer Mount',desc:'Custom 3D printed mount for a hollow shaft potentiometer on the picking mechanism, enabling accurate angular position feedback from the DC worm gear motor.',highlights:['Hollow shaft potentiometer','DC worm gear feedback','Angular position control','3D printed bracket','Custom mounting','Precision control']},
-  {id:18,cat:'mechanism', year:'2022',        icon:'🔵',title:'3D Printed Slew Bearing',desc:'Custom 3D printed slew bearing for low-load applications using angled cylindrical rollers handling both axial and radial loads.',highlights:['Axial + radial load','Cylindrical rollers','Low-load application','FDM 3D printed','Alternative to COTS','Compact design']},
-  {id:19,cat:'mechanism', year:'2022',        icon:'📡',title:'Odometry Pods — Holonomic Drive',desc:'Odometry pods with Omni wheel + encoder providing 2-axis position feedback for accurate field localization (X, Y, θ) on 3-wheel holonomic robots.',highlights:['2-axis position feedback','Omni wheel + encoder','X, Y, θ localization','3-wheel holonomic','Custom bracket','Competition use']},
-  {id:20,cat:'mechanism', year:'2021',        icon:'✋',title:'Picking Mechanism — Robocon 2021',desc:'Picks 5 arrows at a time from the rack using pneumatic or electric grippers. DC 12V worm gear motor rotates the complete assembly for positioning.',highlights:['5 arrows at once','Pneumatic or electric','DC 12V worm gear','Full rotation','Modular design','Competition-grade']},
-  {id:21,cat:'mechanism', year:'2021',        icon:'🦀',title:'Arrow Ground Picking Claw',desc:'Forklift-inspired claw picks arrows from the ground. Servo motor and hook on servo horn secure the arrow during transfer to the thrower.',highlights:['Forklift-inspired','Servo actuated','Hook on servo horn','Ground pickup','Aluminium + 3D print','Arrow retention']},
-  {id:22,cat:'mechanism', year:'2021',        icon:'🔧',title:'Sheet Metal Bending Die',desc:'3D printed bench-vice-mounted die for bending 2–3mm aluminium sheets at 90°. Simple, repeatable custom tooling solution.',highlights:['90° bending die','2–3mm aluminium','Bench vice mounted','3D printed','Custom tooling','Repeatable bends']},
-  {id:23,cat:'academic',  year:'2022',        icon:'🚂',title:'Railway Track Crack Detection Bot',desc:'Prototype bot detecting cracks >2cm on railway tracks using ultrasonic sensors and an ML-trained camera. Unique traversal mechanism for compact movement along the track.',highlights:['ML crack detection >2cm','Ultrasonic + camera','Custom track traversal','Compact form factor','Prototype build','Computer vision']},
-  {id:24,cat:'academic',  year:'2022',        icon:'🛵',title:'Self-Balancing 2-Wheeler (Gyroscope)',desc:'Two-wheeled vehicle using mechanical gyroscopes for passive self-balancing. Spinning discs generate a counter-reacting torque when the vehicle tilts.',highlights:['Passive gyroscopic balance','Spinning disc gyros','No active control','Counter-reacting torque','Two-wheel vehicle','Educational build']},
-  {id:25,cat:'academic',  year:'2021',        icon:'♿',title:'Mind Control Assistive Wheelchair',desc:'Wheelchair platform for mind-control assistive technology with BLDC hub motor rear wheels and caster front wheels. Structural FEA performed in Ansys.',highlights:['BLDC hub motor drive','Mind-control platform','Ansys FEA','Caster front wheels','Full chassis design','Assistive tech']},
-  {id:26,cat:'academic',  year:'2021',        icon:'🦴',title:'Hip Joint FEA — Ansys',desc:'FEA in Ansys Workbench 2021 comparing structural efficiency of natural femur bone vs. hip replacement implant. Results published as an academic paper.',highlights:['Ansys Workbench 2021','Femur vs. implant','FEA stress analysis','Hip replacement study','Academic paper','Biomedical engineering']},
-  {id:27,cat:'academic',  year:'2019',        icon:'🚁',title:'BLDC Quadcopter Drone',desc:'Self-built quadcopter using KK 2.1.5 flight controller and 2212 1000kv BLDC motors. Focus on mechanical aspects — frame design, motor mounting, and balance.',highlights:['KK 2.1.5 controller','2212 1000kv BLDC','Self-built frame','X-configuration','Mechanical dynamics','Educational build']},
-  {id:28,cat:'academic',  year:'2021',        icon:'🏗️',title:'Industrial EOT Overhead Crane',desc:'Design of an EOT underslung crane for 1-ton loads covering runway, end carriages, bridge, drive mechanisms, and shop floor planning.',highlights:['1-ton load','Underslung crane','Runway + end carriages','Drive mechanism','Shop floor planning','Structural analysis']},
+  {id:1,cat:'industrial',year:'2024–Present',icon:'🏭',title:'FlowT Forklift AMR',desc:'Led original design of multiple pallet-handling Forklift AMR products for ground-to-ground and ground-to-rack applications. 1–1.5 ton payload; deployed at live customer sites. Two patents filed.',highlights:['1–1.5 ton payload','Ground & rack configs','Live customer deployments','2 patents filed','GD&T drawings & BOMs','Full lifecycle management']},
+  {id:2,cat:'industrial',year:'2024–Present',icon:'🤖',title:'Assembly Line Robot (AGV)',desc:"Led original mechanical design of Addverb's Assembly Line Robot — a 250 kg payload AGV for automotive assembly-line automation with synchronized lifting, in-place turning, and autonomous navigation.",highlights:['250 kg payload','Automotive assembly-line','Synchronized lifting','In-place turning','Autonomous navigation','Chassis & material handling']},
+  {id:3,cat:'competition',year:'2023',icon:'🦾',title:'FTC 2023 — Full Robot Design',desc:'Designed for FIRST Tech Challenge 2023 to autonomously pick cones and place them at field locations. Mecanum drivetrain, turret, and linear lifting system minimized moment of inertia.',highlights:['Mecanum holonomic drive','Odometry pods X/Y/θ','Turret for fast cycle time','35in lift height','10+ custom mechanisms','Lightweight optimization']},
+  {id:4,cat:'competition',year:'2023',icon:'🛞',title:'FTC 2023 — Mecanum Drivetrain',desc:'Compact Mecanum drivetrain with odometry pods for robot localization in X, Y, and θ. Low CG to prevent toppling; full holonomic movement for high field agility.',highlights:['Full holonomic movement','Odometry pods (X, Y, θ)','Low CG design','Compact form factor','Custom manufactured','3D printed mounts']},
+  {id:5,cat:'competition',year:'2023',icon:'🔄',title:'Turret Mechanism',desc:'Reduces cycle time for autonomous and driver periods. 3 bearings spaced equally around a circumference replace bulky COTS bearings, enabling smooth frictionless rotation.',highlights:['3-bearing distributed load','No large COTS bearings','Smooth frictionless rotation','Optimized for cycle time','3D printed ring','Custom arrangement']},
+  {id:6,cat:'competition',year:'2023',icon:'⬆️',title:'Lifting Mechanism — FTC 2023',desc:'Lifts cones from variable heights to a maximum of 35in (889mm) using a combination of sliders and string systems.',highlights:['35in (889mm) max height','String + slider system','Variable pick heights','Lightweight design','Integrated with turret','Competition use']},
+  {id:7,cat:'competition',year:'2023',icon:'🤖',title:'FRC 2023 — Swerve Drive Robot',desc:'Most complex robot designed — picks compliant cones and cubes for grid deposition. Swerve drive for fast localization; Falcon 500 motors (6300 RPM, 4.69 Nm) with variable planetary gearboxes.',highlights:['Swerve drive','Falcon 500 (6300 RPM)','4.69 Nm stall torque','Variable planetary GBX','Compliant cone intake','15s auto + 2 min driver']},
+  {id:8,cat:'competition',year:'2022',icon:'🏆',title:'Robocon 2022 — R1 & R2 Robots',desc:'R1: 3-wheel holonomic drive with flywheel shooter for Lagori at adjustable pitch. R2: 3-wheel holonomic with Lagori stacking and belt-driven ball picking via linear guides.',highlights:['3-wheel holonomic (both)','Flywheel shooter (R1)','Adjustable pitch (R1)','Lagori stacking (R2)','Belt ball picking (R2)','Linear guide systems']},
+  {id:9,cat:'competition',year:'2021',icon:'🎯',title:'Robocon 2021 — Arrow Robots',desc:'Two robots picking arrows and shooting into targets. Bot 1: rack pick + thrower. Bot 2: ground claw + spring thrower with pneumatic angle adjustment via lead screw.',highlights:['Pneumatic arrow gripper','Spring-loaded thrower','Lead screw angle adj.','Ground-picking claw','Worm gear rotation','Potentiometer feedback']},
+  {id:10,cat:'mechanism',year:'2023',icon:'⚙️',title:'Cycloidal Drive Gearbox',desc:'3D printed cycloidal gearbox without bearings or rollers. 10:1 reduction, 30mm thick, 50mm footprint, hex profile I/O shaft. Comparative study vs. planetary gearbox.',highlights:['10:1 reduction ratio','30mm thick, 50mm footprint','No bearings or rollers','Hex profile I/O','FDM 3D printed','vs. planetary study']},
+  {id:11,cat:'mechanism',year:'2023',icon:'🦀',title:'Compliant Cone Intake — FRC',desc:'Active compliant wheels securely grip and transport compliant cones at different heights for the FRC 2023 challenge.',highlights:['Active compliant wheels','Secure cone retention','Multi-height deposition','Integrated with swerve robot','Belt-driven','Custom roller geometry']},
+  {id:12,cat:'mechanism',year:'2023',icon:'🏗️',title:'Lightweight Structural Components',desc:'Optimized structural design for the FTC 2023 lifter end — extremely light weight yet rigid to support horizontal extension along the gripper.',highlights:['Weight-optimized','Rigid & lightweight','Horizontal extension support','FDM 3D printed','Competition use','Custom geometry']},
+  {id:13,cat:'mechanism',year:'2021',icon:'🏹',title:'Throwing Mechanism — Robocon 2021',desc:'Pneumatic piston cocks a striker; four springs propel the arrow on release. Lead screw + motor adjusts angle. Unique snapping motor mount solves complex kinematic constraints.',highlights:['Pneumatic cocking','4-spring propulsion','Lead screw angle control','Snapping motor mount','3D printed hinge','Adjustable trajectory']},
+  {id:14,cat:'mechanism',year:'2021',icon:'✊',title:'Self-locking Gripper',desc:'Passive gripper using torsion and compression springs. Pushing an object in closes and locks the claw; a release trigger drops it. No power required to grip.',highlights:['Passive locking','Torsion spring claws','Compression spring lock','Release trigger','No power to grip','Mechanically elegant']},
+  {id:15,cat:'mechanism',year:'2021',icon:'🤏',title:'Pneumatic Gripper',desc:'3D printed gripper arms for pneumatic actuation to pick arrows or cylindrical objects, with a guide plate for precise arrow alignment.',highlights:['3D printed arms','Pneumatic actuation','Cylindrical object grip','Guide plate','Custom profile','Competition-grade']},
+  {id:16,cat:'mechanism',year:'2021',icon:'⚡',title:'Electrical Gripper',desc:'3D printed gripper using linkages and a push-pull solenoid actuator. Rapid prototyping solution requiring no compressed air.',highlights:['Push-pull solenoid','3D printed linkages','Compact design','Electric actuation','No air required','Fast actuation']},
+  {id:17,cat:'mechanism',year:'2021',icon:'📡',title:'Potentiometer Mount',desc:'Custom 3D printed mount for a hollow shaft potentiometer on the picking mechanism, enabling accurate angular position feedback from the DC worm gear motor.',highlights:['Hollow shaft potentiometer','DC worm gear feedback','Angular position control','3D printed bracket','Custom mounting','Precision control']},
+  {id:18,cat:'mechanism',year:'2022',icon:'🔵',title:'3D Printed Slew Bearing',desc:'Custom 3D printed slew bearing for low-load applications using angled cylindrical rollers handling both axial and radial loads.',highlights:['Axial + radial load','Cylindrical rollers','Low-load application','FDM 3D printed','Alternative to COTS','Compact design']},
+  {id:19,cat:'mechanism',year:'2022',icon:'📡',title:'Odometry Pods — Holonomic Drive',desc:'Odometry pods with Omni wheel + encoder providing 2-axis position feedback for accurate field localization (X, Y, θ) on 3-wheel holonomic robots.',highlights:['2-axis position feedback','Omni wheel + encoder','X, Y, θ localization','3-wheel holonomic','Custom bracket','Competition use']},
+  {id:20,cat:'mechanism',year:'2021',icon:'✋',title:'Picking Mechanism — Robocon 2021',desc:'Picks 5 arrows at a time from the rack using pneumatic or electric grippers. DC 12V worm gear motor rotates the complete assembly for positioning.',highlights:['5 arrows at once','Pneumatic or electric','DC 12V worm gear','Full rotation','Modular design','Competition-grade']},
+  {id:21,cat:'mechanism',year:'2021',icon:'🦀',title:'Arrow Ground Picking Claw',desc:'Forklift-inspired claw picks arrows from the ground. Servo motor and hook on servo horn secure the arrow during transfer to the thrower.',highlights:['Forklift-inspired','Servo actuated','Hook on servo horn','Ground pickup','Aluminium + 3D print','Arrow retention']},
+  {id:22,cat:'mechanism',year:'2021',icon:'🔧',title:'Sheet Metal Bending Die',desc:'3D printed bench-vice-mounted die for bending 2–3mm aluminium sheets at 90°. Simple, repeatable custom tooling solution.',highlights:['90° bending die','2–3mm aluminium','Bench vice mounted','3D printed','Custom tooling','Repeatable bends']},
+  {id:23,cat:'academic',year:'2022',icon:'🚂',title:'Railway Track Crack Detection Bot',desc:'Prototype bot detecting cracks >2cm on railway tracks using ultrasonic sensors and an ML-trained camera. Unique traversal mechanism for compact movement along the track.',highlights:['ML crack detection >2cm','Ultrasonic + camera','Custom track traversal','Compact form factor','Prototype build','Computer vision']},
+  {id:24,cat:'academic',year:'2022',icon:'🛵',title:'Self-Balancing 2-Wheeler (Gyroscope)',desc:'Two-wheeled vehicle using mechanical gyroscopes for passive self-balancing. Spinning discs generate a counter-reacting torque when the vehicle tilts.',highlights:['Passive gyroscopic balance','Spinning disc gyros','No active control','Counter-reacting torque','Two-wheel vehicle','Educational build']},
+  {id:25,cat:'academic',year:'2021',icon:'♿',title:'Mind Control Assistive Wheelchair',desc:'Wheelchair platform for mind-control assistive technology with BLDC hub motor rear wheels and caster front wheels. Structural FEA performed in Ansys.',highlights:['BLDC hub motor drive','Mind-control platform','Ansys FEA','Caster front wheels','Full chassis design','Assistive tech']},
+  {id:26,cat:'academic',year:'2021',icon:'🦴',title:'Hip Joint FEA — Ansys',desc:'FEA in Ansys Workbench 2021 comparing structural efficiency of natural femur bone vs. hip replacement implant. Results published as an academic paper.',highlights:['Ansys Workbench 2021','Femur vs. implant','FEA stress analysis','Hip replacement study','Academic paper','Biomedical engineering']},
+  {id:27,cat:'academic',year:'2019',icon:'🚁',title:'BLDC Quadcopter Drone',desc:'Self-built quadcopter using KK 2.1.5 flight controller and 2212 1000kv BLDC motors. Focus on mechanical aspects — frame design, motor mounting, and balance.',highlights:['KK 2.1.5 controller','2212 1000kv BLDC','Self-built frame','X-configuration','Mechanical dynamics','Educational build']},
+  {id:28,cat:'academic',year:'2021',icon:'🏗️',title:'Industrial EOT Overhead Crane',desc:'Design of an EOT underslung crane for 1-ton loads covering runway, end carriages, bridge, drive mechanisms, and shop floor planning.',highlights:['1-ton load','Underslung crane','Runway + end carriages','Drive mechanism','Shop floor planning','Structural analysis']},
 ];
 
-/* ===== LIGHTBOX ===== */
-let lbImgs=[], lbIdx=0;
-function lbOpen(imgs,idx){
-  lbImgs=imgs; lbIdx=idx;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
-  lbShow();
-}
-function lbClose(){
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow='';
-}
+/* LIGHTBOX */
+let lbImgs=[],lbIdx=0;
+function lbOpen(imgs,idx){lbImgs=imgs;lbIdx=idx;document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';lbShow();}
+function lbClose(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
 function lbShow(){
-  const img=document.getElementById('lb-img');
-  img.style.opacity='0';
-  img.src=lbImgs[lbIdx];
+  const img=document.getElementById('lb-img');img.style.opacity='0';img.src=lbImgs[lbIdx];
   img.onload=()=>{img.style.transition='opacity .22s';img.style.opacity='1'};
   document.getElementById('lb-counter').textContent=(lbImgs.length>1)?(lbIdx+1)+' / '+lbImgs.length:'';
   document.getElementById('lb-prev').className=lbIdx===0?'hide':'';
@@ -552,34 +558,65 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight')lbNav(1);
 });
 
-/* ===== GALLERY ===== */
+/* GALLERY */
 function buildGallery(pid){
-  const files=IMGS[pid]||[];
-  if(!files.length)return '';
+  const files=IMGS[pid]||[];if(!files.length)return '';
   const srcs=JSON.stringify(files.map(f=>'images/'+f));
   const cls=files.length>=3?'c3':files.length===2?'c2':'c1';
   return '<div class="img-gallery '+cls+'">'+files.map((f,i)=>
-    '<div class="gimg" onclick=\'lbOpen('+srcs+','+i+')\'>'
-    +'<img src="images/'+f+'" alt="Photo '+(i+1)+'" '
-    +'onerror="this.parentNode.style.cursor=\'default\';this.parentNode.innerHTML=\'<div class=&quot;gimg-ph&quot;><span class=&quot;ph-icon&quot;>📷</span><span>Photo '+(i+1)+'</span><code>images/'+f+'</code></div>\'">'
-    +'</div>'
+    '<div class="gimg" onclick=\'lbOpen('+srcs+','+i+')\'><img src="images/'+f+'" alt="Photo '+(i+1)+'" onerror="this.parentNode.style.cursor=\'default\';this.parentNode.innerHTML=\'<div class=&quot;gimg-ph&quot;><span class=&quot;ph-icon&quot;>📷</span><span>Photo '+(i+1)+'</span><code>images/'+f+'</code></div>\'"></div>'
   ).join('')+'</div>';
 }
 
-/* ===== CARDS ===== */
+/* VIDEO SECTION */
+function buildVideos(pid){
+  const vids=VIDS[pid]||[];
+
+  // No videos configured — show helpful placeholder
+  if(!vids.length){
+    return '<div class="video-section">'
+      +'<div class="video-section-ttl">Videos</div>'
+      +'<div class="video-add-note">'
+      +'<div class="video-add-note-icon">🎬</div>'
+      +'<div class="video-add-note-text">'
+      +'<strong>Add a video for this project</strong>'
+      +'Open <code>index.html</code> and find the <code>VIDS</code> object. '
+      +'For YouTube add <code>{ type: \'youtube\', id: \'VIDEO_ID\' }</code>. '
+      +'For a local file upload to <code>/videos/</code> and add <code>{ type: \'local\', src: \'videos/filename.mp4\' }</code>.'
+      +'</div></div></div>';
+  }
+
+  // Build video embeds
+  const cls=vids.length>1?'v2':'v1';
+  const items=vids.map(v=>{
+    let inner='';
+    if(v.type==='youtube'){
+      // Lazy-load YouTube via srcdoc to avoid autoplay/privacy issues
+      inner='<iframe loading="lazy" src="https://www.youtube.com/embed/'+v.id+'?rel=0" '
+        +'title="'+(v.label||'Video')+'" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>';
+    } else if(v.type==='local'){
+      inner='<video controls preload="metadata" src="'+v.src+'"></video>';
+    }
+    return '<div class="video-wrap">'+inner+'</div>';
+  }).join('');
+
+  return '<div class="video-section">'
+    +'<div class="video-section-ttl">Videos</div>'
+    +'<div class="video-grid '+cls+'">'+items+'</div>'
+    +'</div>';
+}
+
+/* CARDS */
 function buildCard(p){
   const files=IMGS[p.id]||[];
   const thumb=files.length?'<img src="images/'+files[0]+'" alt="'+p.title+'" onerror="this.style.display=\'none\'">':'';
   return '<div class="proj-card" onclick="showProject('+p.id+')">'
-    +'<div class="proj-thumb">'+thumb+'<span class="proj-thumb-icon">'+p.icon+'</span>'
-    +'<span class="proj-cat-tag">'+CAT[p.cat].icon+' '+CAT[p.cat].label+'</span></div>'
-    +'<div class="proj-body"><div class="proj-title">'+p.title+'</div>'
-    +'<div class="proj-desc">'+p.desc.slice(0,118)+'…</div>'
-    +'<div class="proj-footer"><span class="proj-year">'+p.year+'</span><span class="proj-cta">View details →</span></div>'
-    +'</div></div>';
+    +'<div class="proj-thumb">'+thumb+'<span class="proj-thumb-icon">'+p.icon+'</span><span class="proj-cat-tag">'+CAT[p.cat].icon+' '+CAT[p.cat].label+'</span></div>'
+    +'<div class="proj-body"><div class="proj-title">'+p.title+'</div><div class="proj-desc">'+p.desc.slice(0,118)+'…</div>'
+    +'<div class="proj-footer"><span class="proj-year">'+p.year+'</span><span class="proj-cta">View details →</span></div></div></div>';
 }
 
-/* ===== RENDER ===== */
+/* RENDER */
 function renderProjects(filter){
   filter=filter||'all';
   ['all','industrial','competition','mechanism','academic'].forEach(c=>{
@@ -589,15 +626,11 @@ function renderProjects(filter){
   const cats=filter==='all'?Object.keys(CAT):[filter];
   document.getElementById('proj-content').innerHTML=cats.map(cat=>{
     const items=PROJECTS.filter(p=>p.cat===cat);
-    return '<div class="cat-block"><div class="cat-hdr">'
-      +'<span class="cat-ico">'+CAT[cat].icon+'</span>'
-      +'<span class="cat-ttl">'+CAT[cat].label+'</span>'
-      +'<span class="cat-pill">'+items.length+' project'+(items.length!==1?'s':'')+'</span>'
-      +'</div><div class="proj-grid">'+items.map(buildCard).join('')+'</div></div>';
+    return '<div class="cat-block"><div class="cat-hdr"><span class="cat-ico">'+CAT[cat].icon+'</span><span class="cat-ttl">'+CAT[cat].label+'</span><span class="cat-pill">'+items.length+' project'+(items.length!==1?'s':'')+'</span></div><div class="proj-grid">'+items.map(buildCard).join('')+'</div></div>';
   }).join('');
 }
 
-/* ===== FILTER ===== */
+/* FILTER */
 function applyFilter(cat,btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');
@@ -605,7 +638,7 @@ function applyFilter(cat,btn){
   renderProjects(cat);
 }
 
-/* ===== NAV ===== */
+/* NAV */
 function setActive(id){
   const m={about:'nl-about',experience:'nl-experience',projects:'nl-projects',contact:'nl-contact'};
   Object.keys(m).forEach(k=>{const el=document.getElementById(m[k]);if(el)el.classList.toggle('active',k===id);});
@@ -629,7 +662,7 @@ window.addEventListener('scroll',()=>{
   if(cur)setActive(cur);
 });
 
-/* ===== PAGE SWITCH ===== */
+/* PAGE SWITCH */
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
@@ -638,31 +671,29 @@ function showPage(name){
   document.getElementById('nav-back').style.display=home?'none':'flex';
 }
 
-/* ===== PROJECT DETAIL ===== */
+/* PROJECT DETAIL */
 function showProject(id){
-  const p=PROJECTS.find(x=>x.id===id);
-  if(!p)return;
+  const p=PROJECTS.find(x=>x.id===id);if(!p)return;
   document.getElementById('proj-detail-content').innerHTML=
     '<div class="proj-detail-tag">'+CAT[p.cat].icon+' '+CAT[p.cat].label+'</div>'
     +'<h1 class="proj-detail-title">'+p.title+'</h1>'
     +'<div class="proj-meta-row"><span class="meta-pill">📅 '+p.year+'</span><span class="meta-pill">📂 '+CAT[p.cat].label+'</span></div>'
     +buildGallery(id)
+    +buildVideos(id)
     +'<div class="proj-detail-desc">'+p.desc+'</div>'
-    +'<div class="detail-sec-ttl">🔑 Key Highlights</div>'
+    +'<div class="detail-sec-ttl">Key Highlights</div>'
     +'<div class="hl-grid">'+p.highlights.map(h=>'<div class="hl-item"><div class="hl-dot"></div><span>'+h+'</span></div>').join('')+'</div>'
     +'<div class="proj-nav-row">'
     +'<button class="pnav-btn" onclick="goHome();setTimeout(()=>navToFilter(\''+p.cat+'\'),120)">← Back to '+CAT[p.cat].label+'</button>'
     +(id>1?'<button class="pnav-btn" onclick="showProject('+(id-1)+')">← Previous</button>':'')
     +(id<PROJECTS.length?'<button class="pnav-btn primary" onclick="showProject('+(id+1)+')">Next →</button>':'')
     +'</div>';
-  showPage('project');
-  window.scrollTo(0,0);
+  showPage('project');window.scrollTo(0,0);
 }
 
-/* ===== CONTACT ===== */
+/* CONTACT */
 document.getElementById('contact-form').addEventListener('submit',async function(e){
-  e.preventDefault();
-  const btn=document.getElementById('fsubmit');
+  e.preventDefault();const btn=document.getElementById('fsubmit');
   btn.disabled=true;btn.textContent='Sending…';
   try{
     const res=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});
@@ -671,7 +702,6 @@ document.getElementById('contact-form').addEventListener('submit',async function
   }catch{document.getElementById('form-err').style.display='block';btn.disabled=false;btn.textContent='Send Message →';}
 });
 
-/* ===== INIT ===== */
 renderProjects('all');
 </script>
 </body>

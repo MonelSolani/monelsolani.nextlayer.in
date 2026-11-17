@@ -538,9 +538,7 @@ const VIDS={
   1:[{ type: 'youtube', id: 'BmOmpcwQXQM', label: 'Demo video' }],  // FlowT Forklift AMR — add YouTube ID or local file
   2:[{ type: 'youtube', id: 'XvHbO0gZETc', label: 'Demo video' }],  // Assembly Line Robot
   3:[{ type: 'local', src: 'videos/p3_Auto-High Pole.mp4' },
-     { type: 'local', src: 'videos/p3_20870 & 20871.mp4' },
-     { type: 'local', src: 'videos/p3_slider_extension.mp4' },
-     { type: 'local', src: 'videos/p3_wrist_motion.mp4' },],  // FTC 2023 - 20870 Matrix
+     { type: 'local', src: 'videos/p3_20870 & 20871.mp4' }],  // FTC 2023 - 20870 Matrix
   4:[],  // Mecanum Drivetrain
   5:[],  // Turret Mechanism
   6:[],  // Lifting Mechanism
@@ -668,8 +666,8 @@ const PROJECTS=[
        note:'In hindsight: the wrist joint was a weak point and could be redesigned to be more robust.',
        /* Videos for this subsection. Fill in ONE of:  id:'YOUTUBE_ID'   or   src:'videos/p3_slider_extension.mp4'
           Leave both out to show the placeholder tile. */
-       vids:[{label:'Horizontal slider extension', file:'videos/p3_slider_extension.mp4'},
-             {label:'Wrist joint motion',          file:'videos/p3_wrist_motion.mp4'}],
+       vids:[{ type: 'local', src: 'videos/p3_slider_extension.mp4' },
+             { type: 'local', src: 'videos/p3_wrist_motion.mp4' }],
        imgs:[['p3_slider_wrist.jpg','Slider and wrist on the robot'],['p3_wrist_closeup.jpg','Wrist joint close-up'],['p3_gripper_cad.jpg','Gripper & extension CAD'],['p3_gripper_fea.jpg','Von Mises stress / deflection FEA'],['p3_gripper_photo.jpg','Gripper on the robot'],['p3_gripper_field.jpg','On the field with cones']]},
     ]},
   {id:4,cat:'competition',year:'2023',icon:'🛞',title:'FTC 2023 — Mecanum Drivetrain',desc:'Compact Mecanum drivetrain with odometry pods for robot localization in X, Y, and θ. Low CG to prevent toppling; full holonomic movement for high field agility.',highlights:['Full holonomic movement','Odometry pods (X, Y, θ)','Low CG design','Compact form factor','Custom manufactured','3D printed mounts']},

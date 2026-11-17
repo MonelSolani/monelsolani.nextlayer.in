@@ -193,6 +193,40 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .pnav-btn:hover{border-color:var(--accent);color:var(--accent)}
 .pnav-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 2px 10px rgba(37,99,235,0.22)}
 
+/* ===== 3D MODEL VIEWER ===== */
+.model-section{margin:0 0 2rem}
+.model-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.65rem}
+.model-tab{background:#fff;border:1.5px solid var(--border);color:var(--text2);font-size:.78rem;font-weight:600;padding:.35rem .85rem;border-radius:7px;cursor:pointer;transition:all .15s}
+.model-tab:hover{border-color:var(--accent3);color:var(--accent)}
+.model-tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.model-wrap{position:relative;width:100%;aspect-ratio:16/10;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:radial-gradient(ellipse at 50% 38%,#ffffff 0%,#f1f6ff 55%,#dfe8f6 100%);box-shadow:var(--shadow)}
+.model-wrap:fullscreen{border-radius:0;border:none}
+.model-wrap canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:none;outline:none}
+.model-wrap canvas:active{cursor:grabbing}
+.model-toolbar{position:absolute;top:.7rem;right:.7rem;display:flex;gap:.4rem;z-index:2}
+.model-btn{background:rgba(255,255,255,0.94);border:1px solid var(--border);color:var(--text2);font-size:.74rem;font-weight:600;padding:.36rem .72rem;border-radius:7px;cursor:pointer;transition:all .15s;font-family:inherit}
+.model-btn:hover{border-color:var(--accent);color:var(--accent)}
+.model-btn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.model-hint{position:absolute;left:.75rem;bottom:.7rem;z-index:2;font-size:.7rem;color:var(--text3);background:rgba(255,255,255,0.88);padding:.26rem .62rem;border-radius:6px;pointer-events:none;transition:opacity .3s}
+.model-status{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.65rem;color:var(--text3);font-size:.82rem;text-align:center;padding:1rem;pointer-events:none}
+.model-status code{font-size:.72rem;background:var(--bg3);padding:.15rem .45rem;border-radius:4px;color:var(--accent);font-family:monospace}
+.model-spin{width:28px;height:28px;border:3px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:mvspin .9s linear infinite}
+@keyframes mvspin{to{transform:rotate(360deg)}}
+.proj-3d-tag{position:absolute;top:.7rem;left:.7rem;z-index:2;background:var(--accent);color:#fff;font-size:.64rem;font-weight:700;padding:.2rem .55rem;border-radius:5px;letter-spacing:.3px}
+@media(max-width:600px){.model-wrap{aspect-ratio:4/3}.model-hint{display:none}}
+
+/* ===== DESIGN BREAKDOWN (per-subsystem sections on a project page) ===== */
+.dsec{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.35rem 1.5rem 1.5rem;margin-bottom:1.1rem;box-shadow:var(--shadow)}
+.dsec-head{display:flex;align-items:center;gap:.7rem;margin-bottom:.85rem}
+.dsec-num{font-size:.72rem;font-weight:800;color:var(--accent);background:var(--border2);padding:.22rem .55rem;border-radius:6px;letter-spacing:.5px}
+.dsec-ttl{font-size:1.06rem;font-weight:800;letter-spacing:-.2px}
+.dsec .exp-ul li{font-size:.9rem}
+.dsec-note{margin-top:.9rem;background:#fffbeb;border:1px solid #fde68a;color:#854d0e;border-radius:9px;padding:.65rem .9rem;font-size:.84rem;line-height:1.6}
+.dsec .img-gallery{margin:1.15rem 0 0}
+.gfig{margin:0;display:flex;flex-direction:column;gap:.4rem;min-width:0}
+.dsec-vids{margin-top:1.15rem}
+.gfig figcaption{font-size:.74rem;color:var(--text3);text-align:center;line-height:1.4}
+
 /* LIGHTBOX */
 #lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(8px)}
 #lightbox.open{display:flex}
@@ -467,7 +501,7 @@ const CAT={
 
 const IMGS={
   1:['p0_a.jpg','p0_b.jpg','p0_c.jpg','p0_d.jpg'],2:['p2_a.jpg','p2_b.jpg'],
-  3:['p3_a.jpg','p3_b.jpg','p3_c.jpg','p3_d.jpg'],4:['p4_a.jpg','p4_b.jpg','p4_c.jpg'],
+  3:['p3_a.jpg','p3_b.jpg','p3_c.jpg','p3_d.jpg','p3_e.jpg','p3_f.jpg','p3_g.jpg'],4:['p4_a.jpg','p4_b.jpg','p4_c.jpg'],
   5:['p5_a.jpg','p5_b.jpg'],6:['p6_a.jpg','p6_b.jpg','p6_c.jpg'],
   7:['p7_a.jpg','p7_b.jpg'],8:['p8_a.jpg','p8_b.jpg'],9:['p9_a.jpg'],
   10:['p10_a.jpg','p10_b.jpg'],11:['p11_a.jpg','p11_b.jpg'],12:['p12_a.jpg','p12_b.jpg'],
@@ -503,7 +537,10 @@ const IMGS={
 const VIDS={
   1:[{ type: 'youtube', id: 'BmOmpcwQXQM', label: 'Demo video' }],  // FlowT Forklift AMR — add YouTube ID or local file
   2:[{ type: 'youtube', id: 'XvHbO0gZETc', label: 'Demo video' }],  // Assembly Line Robot
-  3:[],  // FTC 2023 Full Robot
+  3:[{ type: 'local', src: 'videos/p3_Auto-High Pole.mp4' },
+     { type: 'local', src: 'videos/p3_20870 & 20871.mp4' },
+     { type: 'local', src: 'videos/p3_slider_extension.mp4' },
+     { type: 'local', src: 'videos/p3_wrist_motion.mp4' },],  // FTC 2023 - 20870 Matrix
   4:[],  // Mecanum Drivetrain
   5:[],  // Turret Mechanism
   6:[],  // Lifting Mechanism
@@ -531,10 +568,110 @@ const VIDS={
   28:[], // EOT Crane
 };
 
+/*
+  ===== 3D MODELS =====
+  Interactive 3D viewer shown on a project's detail page (drag to rotate, zoom, fullscreen).
+  Put model files in a /models/ folder next to index.html and list them here.
+
+  Supported formats:
+    .stl  → easiest from SolidWorks: File › Save As › STL (binary). Shown in a single colour.
+    .glb  → keeps colours/materials (export from SolidWorks Visualize, Blender, or an online STEP→GLB converter).
+
+  Options per model:
+    src    (required) path to the file
+    label  name shown on the tab when a project has more than one model
+    color  STL colour, e.g. '#c0392b'  (default: steel blue-grey)
+    rotX / rotY / rotZ  rotate in degrees if the model loads lying on its side (e.g. rotX:-90)
+
+  Example:
+    1: [ { src:'models/flowt.glb', label:'FlowT Forklift' } ],
+    3: [ { src:'models/ftc_robot.stl', label:'Full robot', color:'#64748b' },
+         { src:'models/turret.stl',    label:'Turret' } ],
+
+  Projects not listed here simply don't show a 3D section.
+*/
+const MODELS={
+};
+
 const PROJECTS=[
   {id:1,cat:'industrial',year:'2024–Present',icon:'🏭',title:'FlowT Forklift AMR',desc:'Led original design of multiple pallet-handling Forklift AMR products for ground-to-ground and ground-to-rack applications. 1–1.5 ton payload; deployed at live customer sites. Two patents filed.',highlights:['1–1.5 ton payload','Ground & rack configs','Live customer deployments','2 patents filed','GD&T drawings & BOMs','Full lifecycle management']},
   {id:2,cat:'industrial',year:'2024–Present',icon:'🤖',title:'Assembly Line Robot (AGV)',desc:"Led original mechanical design of Addverb's Assembly Line Robot — a 250 kg payload AGV for automotive assembly-line automation with synchronized lifting, in-place turning, and autonomous navigation.",highlights:['250 kg payload','Automotive assembly-line','Synchronized lifting','In-place turning','Autonomous navigation','Chassis & material handling']},
-  {id:3,cat:'competition',year:'2023',icon:'🦾',title:'FTC 2023 — Full Robot Design',desc:'Designed for FIRST Tech Challenge 2023 to autonomously pick cones and place them at field locations. Mecanum drivetrain, turret, and linear lifting system minimized moment of inertia.',highlights:['Mecanum holonomic drive','Odometry pods X/Y/θ','Turret for fast cycle time','35in lift height','10+ custom mechanisms','Lightweight optimization']},
+  /*
+    ===== IMAGE NAMES — FTC 2023 FULL ROBOT (project 3) =====
+    Save each image in /images/ with exactly this name. Until a file exists, the page shows
+    a placeholder with the file name, so you can see where each one goes.
+
+    Overview gallery (top of the page — the robot/team photos):
+      p3_a.jpg   Main hero shot of the robot (also used as the project card thumbnail)
+      p3_b.jpg   Gripper picking a cone
+      p3_c.jpg   Chassis / drivetrain under construction
+      p3_d.jpg   Team with the robot
+      p3_e.jpg   Robot being assembled on the bench
+      p3_f.jpg   Robot on the field
+      p3_g.jpg   Competition pits / judging
+
+    01 Drivetrain & Odometry
+      p3_drive_top.jpg        Top view of the drivetrain with X / Y axes marked
+      p3_drive_cad.jpg        Side view CAD of the drivetrain
+      p3_odometry_pod.jpg     Sprung odometry (encoder) pod
+    02 Lifting Subsystem
+      p3_lift_robot.jpg       Lift raised on the robot
+      p3_lift_drum.jpg        Rope-and-drum close-up
+      p3_lift_slide.jpg       Linear slide (CAD / part)
+    03 Turret
+      p3_turret_cad.jpg       Full robot CAD showing the turret
+      p3_turret_photo.jpg     Turret assembly photo
+      p3_turret_ring_a.jpg    Turret ring CAD — view 1
+      p3_turret_ring_b.jpg    Turret ring CAD — view 2
+      p3_turret_detail.jpg    Bearing section detail drawing
+    04 Horizontal Slider, Wrist Joint, Gripper & Extension
+      p3_slider_wrist.jpg     Slider and wrist on the robot
+      p3_wrist_closeup.jpg    Wrist joint close-up
+      p3_gripper_cad.jpg      Gripper & extension CAD
+      p3_gripper_fea.jpg      Von Mises / deflection FEA result
+      p3_gripper_photo.jpg    Gripper on the robot
+      p3_gripper_field.jpg    Robot with cones on the field
+  */
+  {id:3,cat:'competition',year:'2023',icon:'🦾',title:'FTC 2023 - 20870 Matrix',
+    sectionsTitle:'20870 FTC Matrix Design Breakdown',
+    desc:'Full competition robot designed for FIRST Tech Challenge 2023 to autonomously pick cones and place them at field locations. A compact, low-CG mecanum drivetrain, a 135.5:1 turret, a rope-and-drum lift and a lightweight gripper & extension let the robot lift, pivot and place cones independently of its heading — built around a 6-second autonomous cycle.',
+    highlights:['Mecanum holonomic drive','3 sprung odometry pods (X, Y, θ)','Turret — 135.5:1 reduction','Rope-and-drum lift, 35in height','~1.5 kg gripper & extension','Outtake structure under 200 g','6 s autonomous cycle time','FEA-checked (Von Mises & deflection)'],
+    sections:[
+      {title:'Drivetrain & Odometry',
+       points:['One of the robot’s most compact and distinctive features — mass concentrated at the centre and kept as low as possible to resist tipping.',
+               'Mecanum drive for high agility and full holonomic movement; every wheel is driven independently.',
+               'The four drive motors sit slightly behind the robot’s centre to balance weight distribution and make room for the odometry pods.',
+               'The first 30 seconds are fully autonomous, so the robot needs position feedback for localisation.',
+               'Three actively sprung encoder pods localise the robot in X, Y and θ.'],
+       imgs:[['p3_drive_top.jpg','Drivetrain layout with X / Y axes'],['p3_drive_cad.jpg','Drivetrain — side view CAD'],['p3_odometry_pod.jpg','Sprung odometry pod']]},
+      {title:'Lifting Subsystem',
+       points:['A rope-and-drum mechanism raises the entire horizontal extension and gripper assembly.',
+               'Designed so the motors spend less effort fighting gravity and more effort accelerating the mass.',
+               'This also reduces the holding torque needed when the lift is raised or stationary.'],
+       imgs:[['p3_lift_robot.jpg','Lift raised on the robot'],['p3_lift_drum.jpg','Rope-and-drum close-up'],['p3_lift_slide.jpg','Linear slide']]},
+      {title:'Turret',
+       points:['Added to cut cycle time in both the autonomous and driver-controlled periods.',
+               'Lets the whole lift and intake pivot about the robot’s centre, independent of the drivetrain’s heading.',
+               'Off-the-shelf (COTS) bearings were too large and bulky for the loads involved.',
+               'A stack of 3 bearings was placed at equal intervals around the inner circumference of the turret plate, which allowed for smooth, low-friction rotation.',
+               '135.5:1 gear ratio from the base motor to the output, with an external encoder for feedback.'],
+       imgs:[['p3_turret_cad.jpg','Full robot CAD with turret'],['p3_turret_photo.jpg','Turret assembly'],['p3_turret_detail.jpg','Bearing section detail'],['p3_turret_ring_a.jpg','Turret ring — view 1'],['p3_turret_ring_b.jpg','Turret ring — view 2']]},
+      {title:'Horizontal Slider, Wrist Joint, Gripper & Extension',
+       points:['A slider is mounted at the end of the lift, on a common mounting point that ties both sides of the lift together.',
+               'It extends outwards through a servo-driven crank mechanism.',
+               'An additional joint gives the gripper a wrist motion — extra flexibility when picking up fallen cones and placing cones in autonomous.',
+               'The wrist is driven by a servo and supported by a bearing on the opposite side.',
+               'The horizontal sliders travel with the lift and had to support a 6-second autonomous cycle, so this had to be the lightest mechanism on the robot while still surviving heavy match impacts.',
+               'Aggressive weight reduction of the structural parts brought the assembly to around 1.5 kg.',
+               'Von Mises stress and deflection analyses confirmed the structure would hold up.',
+               'The outtake structure came in under 200 g — a significant saving, given that multiple servos and the gripper still had to be added.'],
+       note:'In hindsight: the wrist joint was a weak point and could be redesigned to be more robust.',
+       /* Videos for this subsection. Fill in ONE of:  id:'YOUTUBE_ID'   or   src:'videos/p3_slider_extension.mp4'
+          Leave both out to show the placeholder tile. */
+       vids:[{label:'Horizontal slider extension', file:'videos/p3_slider_extension.mp4'},
+             {label:'Wrist joint motion',          file:'videos/p3_wrist_motion.mp4'}],
+       imgs:[['p3_slider_wrist.jpg','Slider and wrist on the robot'],['p3_wrist_closeup.jpg','Wrist joint close-up'],['p3_gripper_cad.jpg','Gripper & extension CAD'],['p3_gripper_fea.jpg','Von Mises stress / deflection FEA'],['p3_gripper_photo.jpg','Gripper on the robot'],['p3_gripper_field.jpg','On the field with cones']]},
+    ]},
   {id:4,cat:'competition',year:'2023',icon:'🛞',title:'FTC 2023 — Mecanum Drivetrain',desc:'Compact Mecanum drivetrain with odometry pods for robot localization in X, Y, and θ. Low CG to prevent toppling; full holonomic movement for high field agility.',highlights:['Full holonomic movement','Odometry pods (X, Y, θ)','Low CG design','Compact form factor','Custom manufactured','3D printed mounts']},
   {id:5,cat:'competition',year:'2023',icon:'🔄',title:'Turret Mechanism',desc:'Reduces cycle time for autonomous and driver periods. 3 bearings spaced equally around a circumference replace bulky COTS bearings, enabling smooth frictionless rotation.',highlights:['3-bearing distributed load','No large COTS bearings','Smooth frictionless rotation','Optimized for cycle time','3D printed ring','Custom arrangement']},
   {id:6,cat:'competition',year:'2023',icon:'⬆️',title:'Lifting Mechanism — FTC 2023',desc:'Lifts cones from variable heights to a maximum of 35in (889mm) using a combination of sliders and string systems.',highlights:['35in (889mm) max height','String + slider system','Variable pick heights','Lightweight design','Integrated with turret','Competition use']},
@@ -635,7 +772,7 @@ function buildCard(p){
   const files=IMGS[p.id]||[];
   const thumb=files.length?'<img src="images/'+files[0]+'" alt="'+p.title+'" onerror="this.style.display=\'none\'">':'';
   return '<div class="proj-card" onclick="showProject('+p.id+')">'
-    +'<div class="proj-thumb">'+thumb+'<span class="proj-thumb-icon">'+p.icon+'</span><span class="proj-cat-tag">'+CAT[p.cat].icon+' '+CAT[p.cat].label+'</span></div>'
+    +'<div class="proj-thumb">'+thumb+'<span class="proj-thumb-icon">'+p.icon+'</span><span class="proj-cat-tag">'+CAT[p.cat].icon+' '+CAT[p.cat].label+'</span>'+((MODELS[p.id]||[]).length?'<span class="proj-3d-tag">3D</span>':'')+'</div>'
     +'<div class="proj-body"><div class="proj-title">'+p.title+'</div><div class="proj-desc">'+p.desc.slice(0,118)+'…</div>'
     +'<div class="proj-footer"><span class="proj-year">'+p.year+'</span><span class="proj-cta">View details →</span></div></div></div>';
 }
@@ -686,13 +823,70 @@ window.addEventListener('scroll',()=>{
   if(cur)setActive(cur);
 });
 
+/* 3D MODEL SECTION */
+function buildModels(pid){
+  const ms=MODELS[pid]||[];if(!ms.length)return '';
+  const tabs=ms.length>1?'<div class="model-tabs">'+ms.map((m,i)=>'<button class="model-tab'+(i?'':' active')+'" onclick="switchModel('+pid+','+i+',this)">'+(m.label||('Model '+(i+1)))+'</button>').join('')+'</div>':'';
+  return '<div class="model-section"><div class="video-section-ttl">3D Model</div>'+tabs
+    +'<div class="model-wrap" id="model-wrap">'
+    +'<div class="model-status"><div class="model-spin"></div><span>Loading 3D model…</span></div>'
+    +'<div class="model-toolbar">'
+    +'<button class="model-btn on" data-act="rotate" title="Auto-rotate">⟳ Rotate</button>'
+    +'<button class="model-btn" data-act="reset" title="Reset view">⌂ Reset</button>'
+    +'<button class="model-btn" data-act="full" title="Fullscreen">⛶</button>'
+    +'</div>'
+    +'<div class="model-hint">Drag to rotate · Right-drag to pan · Click, then scroll to zoom</div>'
+    +'</div></div>';
+}
+function mountModel(pid,i){
+  const wrap=document.getElementById('model-wrap');if(!wrap)return;
+  const go=()=>window.MV.mount(wrap,MODELS[pid][i]);
+  if(window.MV)go();else window.addEventListener('mv-ready',go,{once:true});
+}
+function switchModel(pid,i,btn){
+  document.querySelectorAll('.model-tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  mountModel(pid,i);
+}
+
 /* PAGE SWITCH */
 function showPage(name){
+  if(window.MV)window.MV.dispose();
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
   const home=name==='home';
   document.getElementById('main-nav').style.display=home?'flex':'none';
   document.getElementById('nav-back').style.display=home?'none':'flex';
+}
+
+/* DESIGN BREAKDOWN (optional "sections" on a project) */
+function secImgMissing(img){
+  const box=img.parentNode;box.onclick=null;box.style.cursor='default';
+  box.innerHTML='<div class="gimg-ph"><span class="ph-icon">📷</span><code>images/'+img.dataset.file+'</code></div>';
+}
+function buildSecVideos(vids){
+  if(!vids||!vids.length)return '';
+  return '<div class="video-grid '+(vids.length>1?'v2':'v1')+' dsec-vids">'+vids.map(v=>{
+    let inner;
+    if(v.id)inner='<iframe loading="lazy" src="https://www.youtube.com/embed/'+v.id+'?rel=0" title="'+v.label+'" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>';
+    else if(v.src)inner='<video controls preload="metadata" src="'+v.src+'"></video>';
+    else inner='<div class="video-ph"><span class="video-ph-icon">🎬</span><span class="video-ph-title">'+v.label+'</span><code>'+(v.file||'add a YouTube id or video file')+'</code></div>';
+    return '<figure class="gfig"><div class="video-wrap">'+inner+'</div><figcaption>'+v.label+'</figcaption></figure>';
+  }).join('')+'</div>';
+}
+function buildSections(p){
+  if(!p.sections||!p.sections.length)return '';
+  return '<div class="detail-sec-ttl">'+(p.sectionsTitle||'Design Breakdown')+'</div>'+p.sections.map((sec,si)=>{
+    const imgs=sec.imgs||[];
+    const srcs=JSON.stringify(imgs.map(x=>'images/'+x[0])).replace(/"/g,'&quot;');
+    const cls=imgs.length>=3?'c3':imgs.length===2?'c2':'c1';
+    const gal=imgs.length?'<div class="img-gallery '+cls+'">'+imgs.map((x,i)=>
+      '<figure class="gfig"><div class="gimg" onclick="lbOpen('+srcs+','+i+')"><img src="images/'+x[0]+'" alt="'+x[1]+'" data-file="'+x[0]+'" data-cap="'+x[1]+'" onerror="secImgMissing(this)"></div><figcaption>'+x[1]+'</figcaption></figure>'
+    ).join('')+'</div>':'';
+    return '<div class="dsec"><div class="dsec-head"><span class="dsec-num">'+String(si+1).padStart(2,'0')+'</span><h3 class="dsec-ttl">'+sec.title+'</h3></div>'
+      +'<ul class="exp-ul">'+sec.points.map(pt=>'<li>'+pt+'</li>').join('')+'</ul>'
+      +(sec.note?'<div class="dsec-note">💡 '+sec.note+'</div>':'')
+      +gal+buildSecVideos(sec.vids)+'</div>';
+  }).join('');
 }
 
 /* PROJECT DETAIL */
@@ -702,17 +896,20 @@ function showProject(id){
     '<div class="proj-detail-tag">'+CAT[p.cat].icon+' '+CAT[p.cat].label+'</div>'
     +'<h1 class="proj-detail-title">'+p.title+'</h1>'
     +'<div class="proj-meta-row"><span class="meta-pill">📅 '+p.year+'</span><span class="meta-pill">📂 '+CAT[p.cat].label+'</span></div>'
+    +buildModels(id)
     +buildGallery(id)
     +buildVideos(id)
     +'<div class="proj-detail-desc">'+p.desc+'</div>'
     +'<div class="detail-sec-ttl">Key Highlights</div>'
     +'<div class="hl-grid">'+p.highlights.map(h=>'<div class="hl-item"><div class="hl-dot"></div><span>'+h+'</span></div>').join('')+'</div>'
+    +buildSections(p)
     +'<div class="proj-nav-row">'
     +'<button class="pnav-btn" onclick="goHome();setTimeout(()=>navToFilter(\''+p.cat+'\'),120)">← Back to '+CAT[p.cat].label+'</button>'
     +(id>1?'<button class="pnav-btn" onclick="showProject('+(id-1)+')">← Previous</button>':'')
     +(id<PROJECTS.length?'<button class="pnav-btn primary" onclick="showProject('+(id+1)+')">Next →</button>':'')
     +'</div>';
   showPage('project');window.scrollTo(0,0);
+  if((MODELS[id]||[]).length)mountModel(id,0);
 }
 
 /* CONTACT */
@@ -727,6 +924,114 @@ document.getElementById('contact-form').addEventListener('submit',async function
 });
 
 renderProjects('all');
+</script>
+
+<!-- 3D VIEWER ENGINE (three.js, loaded from CDN) -->
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {STLLoader} from 'three/addons/loaders/STLLoader.js';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+
+let current=null;
+function dispose(){if(current){current.destroy();current=null;}}
+
+function mount(wrap,m){
+  dispose();
+  wrap.querySelectorAll('canvas').forEach(c=>c.remove());
+  const status=wrap.querySelector('.model-status');
+  const hint=wrap.querySelector('.model-hint');
+  status.style.display='flex';
+  status.innerHTML='<div class="model-spin"></div><span>Loading 3D model…</span>';
+
+  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.outputColorSpace=THREE.SRGBColorSpace;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.05;
+  wrap.prepend(renderer.domElement);
+
+  const scene=new THREE.Scene();
+  const pmrem=new THREE.PMREMGenerator(renderer);
+  scene.environment=pmrem.fromScene(new RoomEnvironment(),0.04).texture;
+  const key=new THREE.DirectionalLight(0xffffff,1.6);key.position.set(3,5,4);scene.add(key);
+  scene.add(new THREE.HemisphereLight(0xffffff,0xc7d2e3,0.6));
+  const fill=new THREE.DirectionalLight(0xffffff,0.7);fill.position.set(-4,-2,-3);scene.add(fill);
+
+  const cam=new THREE.PerspectiveCamera(35,1,0.01,1000);
+  const controls=new OrbitControls(cam,renderer.domElement);
+  controls.enableDamping=true;controls.dampingFactor=0.08;
+  controls.autoRotate=true;controls.autoRotateSpeed=1.4;
+  controls.enableZoom=false;           // zoom only after clicking into the viewer, so page scroll isn't hijacked
+
+  const onDown=()=>{controls.enableZoom=true;if(hint)hint.style.opacity='0';};
+  const onLeave=()=>{controls.enableZoom=false;};
+  renderer.domElement.addEventListener('pointerdown',onDown);
+  renderer.domElement.addEventListener('pointerleave',onLeave);
+
+  const rotBtn=wrap.querySelector('[data-act=rotate]');
+  rotBtn.classList.add('on');
+  controls.addEventListener('start',()=>{controls.autoRotate=false;rotBtn.classList.remove('on');});
+  let home=null;
+  const onTool=e=>{
+    const b=e.target.closest('.model-btn');if(!b)return;
+    const a=b.dataset.act;
+    if(a==='rotate'){controls.autoRotate=!controls.autoRotate;b.classList.toggle('on',controls.autoRotate);}
+    if(a==='reset'&&home){cam.position.copy(home.pos);controls.target.copy(home.tgt);controls.update();}
+    if(a==='full'){if(document.fullscreenElement)document.exitFullscreen();else if(wrap.requestFullscreen)wrap.requestFullscreen();}
+  };
+  wrap.querySelector('.model-toolbar').addEventListener('click',onTool);
+
+  const resize=()=>{const w=wrap.clientWidth,h=wrap.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();};
+  const ro=new ResizeObserver(resize);ro.observe(wrap);resize();
+
+  function frame(obj){
+    if(!alive)return;
+    const d=THREE.MathUtils.degToRad;
+    obj.rotation.set(d(m.rotX||0),d(m.rotY||0),d(m.rotZ||0));
+    obj.updateMatrixWorld(true);
+    const box=new THREE.Box3().setFromObject(obj);
+    const c=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3());
+    const pivot=new THREE.Group();obj.position.sub(c);pivot.add(obj);scene.add(pivot);
+    const r=size.length()/2||1;
+    const dist=r/Math.sin(THREE.MathUtils.degToRad(cam.fov/2))*1.05;
+    cam.near=dist/200;cam.far=dist*50;cam.updateProjectionMatrix();
+    cam.position.set(dist*0.62,dist*0.42,dist*0.66);
+    controls.target.set(0,0,0);controls.minDistance=r*0.4;controls.maxDistance=dist*4;controls.update();
+    home={pos:cam.position.clone(),tgt:controls.target.clone()};
+    key.position.set(dist,dist*1.5,dist);
+    status.style.display='none';
+  }
+  const fail=()=>{if(!alive)return;status.innerHTML='<span>⚠️ Couldn\'t load the 3D model</span><code>'+m.src+'</code>';};
+  const prog=e=>{if(e.total){const p=Math.round(e.loaded/e.total*100);const sp=status.querySelector('span');if(sp)sp.textContent='Loading 3D model… '+p+'%';}};
+
+  let raf=0,alive=true;
+  const ext=(m.src.split('?')[0].split('.').pop()||'').toLowerCase();
+  if(ext==='stl'){
+    new STLLoader().load(m.src,g=>{
+      g.computeVertexNormals();
+      const mat=new THREE.MeshStandardMaterial({color:m.color||'#8a9bb4',metalness:0.35,roughness:0.45});
+      frame(new THREE.Mesh(g,mat));
+    },prog,fail);
+  }else if(ext==='glb'||ext==='gltf'){
+    new GLTFLoader().load(m.src,gl=>frame(gl.scene),prog,fail);
+  }else{status.innerHTML='<span>⚠️ Unsupported format — use .stl or .glb</span><code>'+m.src+'</code>';}
+
+  const loop=()=>{if(!alive)return;raf=requestAnimationFrame(loop);controls.update();renderer.render(scene,cam);};loop();
+
+  current={destroy(){
+    alive=false;cancelAnimationFrame(raf);ro.disconnect();controls.dispose();
+    wrap.querySelector('.model-toolbar').removeEventListener('click',onTool);
+    scene.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material)[].concat(o.material).forEach(x=>x.dispose());});
+    pmrem.dispose();renderer.dispose();renderer.domElement.remove();
+  }};
+}
+window.MV={mount,dispose};
+window.dispatchEvent(new Event('mv-ready'));
 </script>
 </body>
 </html>

@@ -59,6 +59,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,
 .stat-num{font-size:1.85rem;font-weight:800;color:var(--accent);line-height:1}
 .stat-label{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-top:.25rem}
 
+/* HERO BACKGROUND IMAGES (left / right) */
+.hero-bg-img{position:absolute;top:50%;transform:translateY(-50%);width:clamp(216px,21.6vw,396px);pointer-events:none;z-index:0;user-select:none}
+.hero-bg-img.left{left:3vw;transform:translateY(-60%)}
+.hero-bg-img.right{right:1.5vw;width:clamp(270px,27vw,504px)}
+.hero-bg-img img{width:100%;height:auto;display:block}
+
 /* SECTIONS */
 .section{padding:5rem 2rem}
 .section-inner{max-width:1100px;margin:0 auto}
@@ -228,6 +234,17 @@ textarea.finput{min-height:120px;resize:vertical}
 footer{background:#fff;border-top:1px solid var(--border);padding:2rem;text-align:center;color:var(--text3);font-size:.82rem}
 footer a{color:var(--accent);text-decoration:none}
 
+
+.hero-deco{position:absolute;pointer-events:none;z-index:0;user-select:none}
+.hero-deco img{width:100%;height:auto;display:block}
+.hero-deco.plunger{width:clamp(160px,13vw,250px);left:27vw;top:7%;opacity:.95}
+.hero-deco.intake{width:clamp(180px,14vw,270px);right:9vw;top:5%;opacity:.9}
+.hero-deco.twowheel{width:clamp(220px,17vw,330px);right:13vw;bottom:10%;opacity:.85}
+.hero-deco.sketch{width:clamp(180px,13.5vw,260px);left:17vw;bottom:4%;opacity:.9}
+@media(max-width:1150px){.hero-deco{display:none}}
+/* On smaller screens the images fade back so the text stays readable */
+@media(max-width:1150px){.hero-bg-img{opacity:.15;width:clamp(180px,38vw,340px)}.hero-bg-img.left{left:-4vw}.hero-bg-img.right{right:-4vw}}
+
 @media(max-width:750px){
   .about-grid,.exp-item,.contact-layout{grid-template-columns:1fr}
   .exp-left{text-align:left}
@@ -281,6 +298,13 @@ footer a{color:var(--accent);text-decoration:none}
 
   <section class="hero" id="hero">
     <div class="hero-blob"></div><div class="hero-blob2"></div>
+    <!-- Background images: swap the src to change them (transparent PNGs look best) -->
+    <div class="hero-bg-img left"><img src="images/hero_flowt.png" alt="" onerror="this.style.display='none'"/></div>
+    <div class="hero-bg-img right"><img src="images/hero_right.png" alt="" onerror="this.style.display='none'"/></div>
+    <div class="hero-deco plunger"><img src="images/hero_plunger.png" alt=""/></div>
+    <div class="hero-deco intake"><img src="images/hero_intake.png" alt=""/></div>
+    <div class="hero-deco twowheel"><img src="images/hero_twowheeler.png" alt=""/></div>
+    <div class="hero-deco sketch"><img src="images/hero_sketch.png" alt=""/></div>
     <div class="hero-content">
       <div class="hero-badge"><span class="hero-dot"></span>Open to opportunities</div>
       <h1>Monel Solani</h1>
